@@ -1,14 +1,14 @@
 import React, {Component} from "react";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
-import App from "./ui/App";
-import {Prueba} from "./ui/prueba";
-import {ListaRestaruantes} from "./ui/components/ListaRestaurantes"
+import App from "./App";
+import {Prueba} from "./prueba";
+import RestaurantList from "./components/restaurants/RestaurantList"
 
 export const AppRoutes = () =>
     <BrowserRouter>
         <App>
             <Switch>
-                <Route exact path="/" component={ListaRestaruantes}/>
+                <Route exact path="/" component={RestaurantList}/>
             </Switch>
         </App>
     </BrowserRouter>

@@ -24,10 +24,28 @@
 .menuContainer{
     background-color: #cccccc;
     padding: 50px;
-    
+    margin-bottom: 20px;
 }
 
 .ingredients{
     opacity: 0.5;
 
+}
+
+.orderContainer{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-style: solid;
+    border-color: white;
+    border-bottom-color: black;
+    border-width: thin;
+}
+
+.amount{
+    margin-top: 20px;
+}
+
+.btnConfirm{
+    background-color: #28a745;
+    border-color: #28a745;
 }

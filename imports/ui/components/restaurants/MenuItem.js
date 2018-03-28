@@ -23,7 +23,8 @@ export class MenuItem extends Component{
                 </div>
                 <div className="col-md-6">
                     <p>${this.props.price}</p>
-                    <button onClick={this.handleClick}>Add!</button>
+                    <button className="btn btn-success" onClick={this.handleClick}>Add!</button>
+                    
                 </div>
             </div>
         )

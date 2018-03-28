@@ -5,11 +5,29 @@
 }
 
 .restName {
-    font-family: 'Hind', sans-serif;
+    font-family: 'Enriqueta', serif;
     text-transform: capitalize;
 }
 
 .restContainer{
     margin-top: 20px;
     text-align: center;
+}
+
+.menuItem {
+    font-family: "Hind", sans-serif;
+    background-color: white;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.menuContainer{
+    background-color: #cccccc;
+    padding: 50px;
+    
+}
+
+.ingredients{
+    opacity: 0.5;
+
 }

@@ -1,1 +1,15 @@
 /* CSS declarations go here */
+.restImg {
+    width: 350px;
+    height: 250px;
+}
+
+.restName {
+    font-family: 'Hind', sans-serif;
+    text-transform: capitalize;
+}
+
+.restContainer{
+    margin-top: 20px;
+    text-align: center;
+}

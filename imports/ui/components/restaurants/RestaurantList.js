@@ -11,7 +11,7 @@ class RestaurantList extends Component{
             <div className="container">
                 <div className="row">
                     {this.props.restaurants.map( (d, i) => 
-                        <Restaurant name={d.name} key={i}/>
+                        <Restaurant name={d.name} img={d.img} menu={d.menu} key={i}/>
                     )}
                 </div>
             </div>

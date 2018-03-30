@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
+import React from "react";
 import { withHistory, Link } from 'react-router-dom';
 import { Accounts } from 'meteor/accounts-base';
+import { Meteor } from "meteor/meteor";
+import { Restaurantes } from "../../api/restaurantes";
 
-export default class SignupPage extends Component {
+export default class SingupRestaurant extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -10,6 +13,7 @@ export default class SignupPage extends Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
 
   backHome(e) {
     e.preventDefault();
@@ -31,6 +35,7 @@ export default class SignupPage extends Component {
     let password = document.getElementById("signup-password").value;
     let phone = document.getElementById("signup-phone").value;
     let confPassword = document.getElementById("signup-confirm-password").value;
+    let img = document.getElementById("signup-img").value;
     console.log(name, email, password, phone);
     if(password !== confPassword) {
       this.setState({
@@ -39,14 +44,13 @@ export default class SignupPage extends Component {
       document.getElementById("signup-password").value = "";
       document.getElementById("signup-confirm-password").value = "";
     } else {
-
       Accounts.createUser({
         username: name,
         email: email,
         password: password,
         profile: {
           phone: phone,
-          role: "client"
+          role: "restaurant"
         }
       }, (err) => {
         if(err) {
@@ -57,14 +61,11 @@ export default class SignupPage extends Component {
           this.props.history.push('/login');
         }
       });
-
+      Meteor.call("restaurantes.insert", name, img);
     }
-
-
   }
 
   render() {
-    const error = this.state.error;
     return (
       <div>
         <nav className="navbar navbar-expand-md  navbar-dark bg-dark">
@@ -86,13 +87,16 @@ export default class SignupPage extends Component {
             <p id="profile-name" className="profile-name-card"></p>
             <form id="login-form" className="form col-md-12 center-block" onSubmit={this.handleSubmit}>
               <div className="form-group">
-                <input type="text" id="signup-name" className="form-control input-lg" placeholder="Name" />
+                <input type="text" id="signup-name" className="form-control input-lg" placeholder="Restaurant Name" />
               </div>
               <div className="form-group">
                 <input type="email" id="signup-email" className="form-control input-lg" placeholder="Email adress" />
               </div>
               <div className="form-group">
                 <input type="number" id="signup-phone" className="form-control input-lg" placeholder="Phone number" />
+              </div>
+              <div className="form-group">
+                <input type="text" id="signup-img" className="form-control input-lg" placeholder="Url of your Picture" />
               </div>
               <div className="form-group">
                 <input type="password" id="signup-password" className="form-control input-lg" placeholder="Password" />
@@ -106,7 +110,6 @@ export default class SignupPage extends Component {
               </div>
               <div className="form-group text-center">
                 <p className="text-center">Do you have an account? Log in <Link to="/login">here</Link></p>
-                <p className="text-center">Are you a Restaurant? Register <Link to="/signupRestaurant">here</Link> </p>
               </div>
             </form>
           </div>

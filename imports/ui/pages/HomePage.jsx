@@ -39,9 +39,15 @@ export default class HomePage extends React.Component {
           </button>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav navbar-right">
+              <a className="nav-item nav-link " href="#" onClick={this.login.bind(this)}>Login</a>
+            </div>
+          </div>
+          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div className="navbar-nav navbar-right">
               <a className="nav-item nav-link " href="#" onClick={this.register.bind(this)}>Register</a>
             </div>
           </div>
+
         </nav>
         <div >
           <h1 className="t1">

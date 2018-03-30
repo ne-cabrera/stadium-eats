@@ -20,13 +20,13 @@ class App extends Component {
 
   componentWillMount() {
     if(!this.state.isAuthenticated) {
-      this.props.history.push("/login");
+      this.props.history.push("/Home");
     }
   }
 
   componentDidUpdate(prevProps, prevState) {
     if(!this.state.isAuthenticated) {
-      this.props.history.push("/login");
+      this.props.history.push("/Home");
     }
   }
 
@@ -41,48 +41,93 @@ class App extends Component {
     });
     this.props.history.push("/login");
   }
+  renderClientsNav() {
+    return (
+      <div>
+        <nav className="navbar navbar-expand-md  navbar-dark bg-dark">
+          <div className="container-fluid">
+            <a className="navbar-brand" href="#">Stadium Eats</a>
+          </div>
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <ul className="navbar-nav ml-auto">
+
+            <li className="nav-item">
+              <a href="#" className="nav-link">Home</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="#"> Orders </a>
+            </li>
+
+            <li className="nav-item">
+              <a href="#" className="nav-link"> Restaurants</a>
+            </li>
+
+          </ul>
+          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div className="navbar-nav navbar-right">
+              <a className="nav-item nav-link " href="#" onClick={this.logout}>Logout</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    );
+  }
+
+  renderRestaurantNavBar() {
+    return (
+      <div>
+        <nav className="navbar navbar-expand-md  navbar-dark bg-dark">
+          <div className="container-fluid">
+            <a className="navbar-brand" href="#">Stadium Eats</a>
+          </div>
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <ul className="navbar-nav ml-auto">
+
+            <li className="nav-item">
+              <a href="#" className="nav-link">Home</a>
+            </li>
+
+            <li className="nav-item">
+              <a href="#" className="nav-link"> Succesful</a>
+            </li>
+
+            <li class="nav-item ">
+              <a class="nav-link" href="#"> Orders </a>
+            </li>
+
+            <li className="nav-item">
+              <a href="#" className="nav-link"> Menu</a>
+            </li>
+
+          </ul>
+          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div className="navbar-nav navbar-right">
+              <a className="nav-item nav-link " href="#" onClick={this.logout}>Logout</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    );
+  }
 
   render() {
-    console.log(this.state.user);
+    let currUsr = this.state.user;
     return (
 
-      < div >
-
+      <div>
         <div>
-          <nav className="navbar navbar-expand-md  navbar-dark bg-dark">
-            <div className="container-fluid">
-              <a className="navbar-brand" href="#">Stadium Eats</a>
-            </div>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <ul class="navbar-nav ml-auto">
-
-              <li className="nav-item">
-                <a href="#" className="nav-link">Home</a>
-              </li>
-              <li class="nav-item ">
-                <a class="nav-link" href="#">My Orders </a>
-              </li>
-
-              <li className="nav-item">
-                <a href="#" className="nav-link"> Restaurants</a>
-              </li>
-
-            </ul>
-            <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div className="navbar-nav navbar-right">
-                <a className="nav-item nav-link " href="#" onClick={this.logout}>Logout</a>
-              </div>
-            </div>
-          </nav>
-
-          <div>
-            <MainPage currentUser={this.state.user.username} />
-          </div>
+          {this.state.user.profile.role === "client" ? this.renderClientsNav() : this.renderRestaurantNavBar()}
+        </div>
+        <div>
+          <MainPage currentUser={this.state.user.username} />
         </div>
 
-      </div >
+      </div>
+
     );
   }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withHistory, Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import RestaurantList from "../components/restaurants/RestaurantList.jsx";
 
 export default class MainPage extends Component {
   constructor(props) {
@@ -20,6 +21,9 @@ export default class MainPage extends Component {
       <div>
         <div className="container">
           <h1 className="text-center">{loggedIn ? "Welcome " + this.props.currentUser : ""}</h1>
+        </div>
+        <div>
+          <RestaurantList />
         </div>
       </div>
     );

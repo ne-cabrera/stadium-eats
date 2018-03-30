@@ -4,7 +4,15 @@ import { check } from "meteor/check";
 
 export const Restaurantes = new Mongo.Collection("restaurantes");
 
+
+if(Meteor.isServer) {
+  Meteor.publish("restaurantes", function restaurantesPublication() {
+    return Restaurantes.find();
+  });
+}
+
 Meteor.methods({
+
   "restaurantes.insert"(name, imgUrl) {
     check(name, String);
     check(imgUrl, String);
@@ -17,19 +25,19 @@ Meteor.methods({
       name: name,
       img: imgUrl,
       owner: this.userId,
-      menus: [{}]
+      menu: [{}]
     });
 
   },
   "restaurantes.insertMenu"(plate, restaurantId) {
     check(plate, Object);
     check(restaurantId, String);
-    restaurant = Meteor.Restaurantes.findOne(restaurantId);
-    if(restaurant.owner !== userId) {
-      throw new Meteor.Error("not-Authorized");
-    }
+    // restaurant = Meteor.Restaurantes.findOne(restaurantId);
+    //if(restaurant.owner !== userId) {
+    //throw new Meteor.Error("not-Authorized");
+    //}
     Restaurantes.update(restaurantId, {
-      $push: { menus: plate }
+      $push: { menu: plate }
     });
   }
 });

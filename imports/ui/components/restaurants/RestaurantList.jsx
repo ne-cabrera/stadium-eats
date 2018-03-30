@@ -20,6 +20,8 @@ class RestaurantList extends Component {
 }
 
 export default withTracker(() => {
+  Meteor.subscribe("restaurantes");
+
   return {
     restaurants: Restaurantes.find({}).fetch()
   };

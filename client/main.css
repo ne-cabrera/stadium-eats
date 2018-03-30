@@ -77,6 +77,7 @@ h1{
 .form-signin input[type=email],
 .form-signin input[type=password],
 .form-signin input[type=text],
+.form-signin textarea[type= text],
 .form-signin button {
     width: 100%;
     display: block;

@@ -1,27 +1,27 @@
-import React, { Component } from "react";
-import { withHistory, Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import RestaurantList from "../components/restaurants/RestaurantList.jsx";
+import React from "react";
+import { Restaurantes } from "../../api/restaurantes";
+import { withTracker } from "meteor/react-meteor-data";
+import { withHistory } from "react-router-dom";
 
-export default class MainPage extends Component {
+
+export default class MainPageRestaurant extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      username: ""
-    };
   }
+
   logoutThis(e) {
     e.preventDefault();
     this.props.logout(e);
   }
 
+  toMenus(e) {
+    e.preventDefault();
+    this.props.toMenus(e);
+  }
+
 
   render() {
-    let currentUser = this.props.currentUser;
-    console.log(currentUser, "porque");
-    let userDataAvailable = (currentUser !== undefined);
-    let loggedIn = (currentUser && userDataAvailable);
-    console.log("jijueputa");
+    console.log(this.props);
     return (
       <div>
         <div>
@@ -37,12 +37,17 @@ export default class MainPage extends Component {
               <li className="nav-item">
                 <a href="#" className="nav-link">Home</a>
               </li>
+
+              <li className="nav-item">
+                <a href="#" className="nav-link"> Succesful</a>
+              </li>
+
               <li class="nav-item ">
                 <a class="nav-link" href="#"> Orders </a>
               </li>
 
               <li className="nav-item">
-                <a href="#" className="nav-link"> Restaurants</a>
+                <a href="#" className="nav-link" onClick={this.toMenus.bind(this)}> Menu</a>
               </li>
 
             </ul>
@@ -53,17 +58,14 @@ export default class MainPage extends Component {
             </div>
           </nav>
         </div>
-        <div className="container">
-          <h1 className="text-center">{loggedIn ? "Welcome " + this.props.currentUser : ""}</h1>
-        </div>
         <div>
-          <RestaurantList />
+          <h1>
+            {"Welcome " + this.props.currentUser}
+          </h1>
         </div>
+
       </div>
+
     );
   }
 }
-
-MainPage.propTypes = {
-  username: PropTypes.string
-};

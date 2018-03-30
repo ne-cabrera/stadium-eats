@@ -11,6 +11,8 @@ import LoginPage from "./ui/pages/LoginPage.jsx";
 import HomePage from "./ui/pages/HomePage.jsx";
 import SignupRestaurant from "./ui/pages/SingupRestaurant.jsx";
 import { RestaurantDetail } from "./ui/components/restaurants/RestaurantDetail.jsx";
+import RestaurantList from "./ui/components/restaurants/RestaurantList";
+import OrdersList from "./ui/components/clientOrders/OrdersList";
 
 export const AppRoutes = () => (
   <Router>
@@ -18,8 +20,10 @@ export const AppRoutes = () => (
       <Route path="/login" component={LoginPage} />
       <Route path="/signup" component={SignupPage} />
       <Route path="/restaurantDetail" component={RestaurantDetail} />
+      <Route path="/restaurants" component={RestaurantList} />
       <Route path="/signupRestaurant" component={SignupRestaurant} />
       <Route path="/Home" component={HomePage} />
+      <Route path="/myOrders" component={OrdersList} />
       <Route exact={true} path="/" component={App} />
     </div>
   </Router>

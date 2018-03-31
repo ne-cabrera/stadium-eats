@@ -17,8 +17,7 @@ class App extends Component {
     sessionStorage.setItem("username", Meteor.user().username);
     return {
       isAuthenticated: Meteor.userId() !== null,
-      user: Meteor.user(),
-      resturant: this.props.restaurants[0]
+      user: Meteor.user()
     };
   }
 
@@ -35,34 +34,7 @@ class App extends Component {
   }
 
 
-  toMenus(e) {
-    console.log(this.props.restaurants[0], "El arreglo");
-    console.log(this.props.restaurants[0].menu);
-    e.preventDefault();
-    Meteor.logout((err) => {
-      if(err) {
-        console.log(err.reason);
-      } else {
-        this.props.history.push({
-          pathname: "/myMenu", state: {
-            menus: this.state.restaurants[0].menu,
-            name: this.props.restaurants[0].name,
-            idRes: this.props.restaurants[0]._id,
-          }
-        });
-      }
-    });
-    this.props.history.push({
-      pathname: "/myMenu", state: {
-        menus: this.props.restaurants[0].menu,
-        name: this.props.restaurants[0].name,
-        idRes: this.props.restaurants[0]._id,
 
-
-      }
-    });
-
-  }
 
   logout(e) {
     e.preventDefault();
@@ -111,7 +83,7 @@ class App extends Component {
                   </li>
 
                   <li className="nav-item">
-                    <a href="#" className="nav-link" onClick={this.toMenus.bind(this)}> Menu</a>
+                    <Link className="nav-link" to="/myMenu"> Menu</Link>
                   </li>
 
                 </ul>
@@ -160,9 +132,6 @@ class App extends Component {
                 logout={this.logout.bind(this)} /> :
               <MainPageRestaurant
                 currentUser={this.state.user.username}
-                restaurant={this.state.restaurant}
-                logout={this.logout.bind(this)}
-
               />
           }
         </div>

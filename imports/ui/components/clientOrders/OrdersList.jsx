@@ -5,26 +5,26 @@ import { OrderDetail } from "./OrderDetail";
 
 class OrdersList extends Component {
 
-  render() {
-    console.log(this.props.orders);
-    return (
-      <div className="container">
-        <div className="row">
-          <h3>Your Orders:</h3>
-        </div>
-        <div className="container">
-          {this.props.orders.map((d, i) =>
-            <OrderDetail plates={d.items} state={d.state} price={d.price} restName={d.restaurantName} key={i} />
-          )}
-        </div>
-      </div>
-    );
-  }
+    render() {
+        console.log(this.props.orders);
+        return (
+            <div className="container">
+                <div className="row">
+                    <h3>Your Orders:</h3>
+                </div>
+                <div className="container">
+                    {this.props.orders.map((d, i) =>
+                        <OrderDetail plates={d.items} state={d.state} price={d.price} restName={d.restaurantName} key={i} />
+                    )}
+                </div>
+            </div>
+        );
+    }
 }
 export default withTracker(() => {
-  Meteor.subscribe("orders");
+    Meteor.subscribe("orders");
 
-  return {
-    orders: Orders.find({}).fetch()
-  };
+    return {
+        orders: Orders.find({clientId: Meteor.userId()}).fetch()
+    };
 })(OrdersList);

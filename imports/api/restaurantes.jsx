@@ -12,7 +12,6 @@ if(Meteor.isServer) {
 }
 
 Meteor.methods({
-
   "restaurantes.insert"(name, imgUrl) {
     check(name, String);
     check(imgUrl, String);

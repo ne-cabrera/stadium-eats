@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withHistory } from "react-router-dom";
+import { withHistory, Link } from "react-router-dom";
 import { withTracker } from "meteor/react-meteor-data";
 import MainPage from "./pages/MainPage.jsx";
 import MainPageRestaurant from "./pages/MainPageRestaurant.jsx";
@@ -13,6 +13,8 @@ class App extends Component {
   }
 
   getMeteorData() {
+    sessionStorage.setItem("id", Meteor.userId());
+    sessionStorage.setItem("username", Meteor.user().username);
     return {
       isAuthenticated: Meteor.userId() !== null,
       user: Meteor.user(),
@@ -32,17 +34,6 @@ class App extends Component {
     }
   }
 
-  logout(e) {
-    e.preventDefault();
-    Meteor.logout((err) => {
-      if(err) {
-        console.log(err.reason);
-      } else {
-        this.props.history.push("/login");
-      }
-    });
-    this.props.history.push("/login");
-  }
 
   toMenus(e) {
     console.log(this.props.restaurants[0], "El arreglo");
@@ -73,7 +64,18 @@ class App extends Component {
 
   }
 
+  logout(e) {
+    e.preventDefault();
+    Meteor.logout((err) => {
+      if(err) {
+        console.log(err.reason);
+      } else {
+        this.props.history.push("/Home");
+      }
+    });
+    this.props.history.push("/Home");
 
+  }
 
 
 
@@ -85,6 +87,72 @@ class App extends Component {
     return (
       <div>
         <div>
+          {this.state.user.profile.role === "restaurant" ?
+            <div>
+              <nav className="navbar navbar-expand-md  navbar-dark bg-dark">
+                <div className="container-fluid">
+                  <a className="navbar-brand" href="#">Stadium Eats</a>
+                </div>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                  <span className="navbar-toggler-icon"></span>
+                </button>
+                <ul className="navbar-nav ml-auto">
+
+                  <li className="nav-item">
+                    <a href="#" className="nav-link">Home</a>
+                  </li>
+
+                  <li className="nav-item">
+                    <a href="#" className="nav-link"> Succesful</a>
+                  </li>
+
+                  <li class="nav-item ">
+                    <a class="nav-link" href="#"> Orders </a>
+                  </li>
+
+                  <li className="nav-item">
+                    <a href="#" className="nav-link" onClick={this.toMenus.bind(this)}> Menu</a>
+                  </li>
+
+                </ul>
+                <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+                  <div className="navbar-nav navbar-right">
+                    <a className="nav-item nav-link " href="#" onClick={this.logout.bind(this)}>Logout</a>
+                  </div>
+                </div>
+              </nav>
+            </div> :
+            <div>
+              <nav className="navbar navbar-expand-md  navbar-dark bg-dark">
+                <div className="container-fluid">
+                  <a className="navbar-brand" href="#">Stadium Eats</a>
+                </div>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                  <span className="navbar-toggler-icon"></span>
+                </button>
+                <ul className="navbar-nav ml-auto">
+
+                  <li className="nav-item">
+                    <a href="#" className="nav-link">Home</a>
+                  </li>
+                  <li class="nav-item ">
+                    <a class="nav-link" href="#"> Orders </a>
+                  </li>
+
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/restaurants"> Restaurants</Link>
+                  </li>
+
+                </ul>
+                <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+                  <div className="navbar-nav navbar-right">
+                    <a className="nav-item nav-link " href="#" onClick={this.logout.bind(this)}>Logout</a>
+                  </div>
+                </div>
+              </nav>
+            </div>}
+        </div>
+        <div>
           {
             this.state.user.profile.role === "client" ?
               <MainPage
@@ -94,7 +162,7 @@ class App extends Component {
                 currentUser={this.state.user.username}
                 restaurant={this.state.restaurant}
                 logout={this.logout.bind(this)}
-                toMenus={this.toMenus.bind(this)}
+
               />
           }
         </div>

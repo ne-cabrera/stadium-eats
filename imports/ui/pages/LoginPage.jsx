@@ -17,6 +17,7 @@ export default class LoginPage extends Component {
       if(err) {
         console.log(err.reason);
       } else {
+
         this.props.history.push("/Home");
       }
     });

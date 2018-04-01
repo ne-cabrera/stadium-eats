@@ -168,6 +168,8 @@ h1{
 .restName {
     font-family: 'Enriqueta', serif;
     text-transform: capitalize;
+    color: black;
+    text-decoration: underline;
 }
 
 .restContainer{

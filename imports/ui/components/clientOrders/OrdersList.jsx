@@ -2,40 +2,29 @@ import React, { Component } from "react";
 import { withTracker } from "meteor/react-meteor-data";
 import { Orders } from "../../../api/orders";
 import { OrderDetail } from "./OrderDetail";
+import { ClientAppNav } from "../navs/ClientAppNav";
+import {RestaurantAppNav} from "../navs/RestaurantAppNav";
 
 class OrdersList extends Component {
-    backHome(e) {
-        e.preventDefault();
+
+    constructor(props){
+        super(props);
+        this.logout = this.logout.bind(this);
+    }
+
+    logout() {
         Meteor.logout((err) => {
             if(err) {
                 console.log(err.reason);
-            } else {
-
-                this.props.history.push("/Home");
             }
         });
-        this.props.history.push("/Home");
-
     }
+
     render() {
         console.log(this.props.orders);
         return (
             <div>
-                <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-                    <div className="container">
-                        <a className="navbar-brand" href="#">Stadium Eats</a>
-                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
-                        <div className="collapse navbar-collapse" id="navbarResponsive">
-                            <ul className="navbar-nav ml-auto">
-                                <li className="nav-item">
-                                    <a className="nav-link" href="#" onClick={this.backHome.bind(this)}>Home</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
+                <ClientAppNav onClick={this.logout}/>
                 <div className="container">
                     <div className="row">
                         <h3 className="detail">Your Orders:</h3>

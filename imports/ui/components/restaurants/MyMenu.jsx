@@ -64,7 +64,12 @@ class MyMenu extends React.Component {
             <div className="row">
               <div className="container  col-lg-6 padUp">
                 {this.props.restaurants[0].menu.map((d, i) =>
-                  <MenuRestaurant plateName={d.plateName} ingredients={d.ingredients} price={d.price} key={i} />)
+                  <MenuRestaurant
+                    plateName={d.plateName}
+                    ingredients={d.ingredients}
+                    price={d.price}
+                    img={d.img}
+                    key={i} />)
                 }
               </div>
               <div className="container col-lg-5 padUp">

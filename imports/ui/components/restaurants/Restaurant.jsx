@@ -6,6 +6,7 @@ export class Restaurant extends Component {
 
 
   render() {
+    console.log(this.props.menu)
     return (
       <div className="col-lg-4 restContainer">
         <div className="card">

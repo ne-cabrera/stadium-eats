@@ -15,7 +15,7 @@ export default class MainPageRestaurant extends React.Component {
     console.log(this.props);
     return (
       <div>
-        <div>
+        <div className="padUp">
           <h1>
             {"Welcome " + this.props.currentUser}
           </h1>

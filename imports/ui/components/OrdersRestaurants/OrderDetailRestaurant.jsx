@@ -15,13 +15,18 @@ export class OrderDetailRestaurant extends React.Component {
       <div>
 
         <div className="row border-bottom detail" >
-          <div className="col-md-4">
-            <a href="">
-              <img className="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="" />
-            </a>
-          </div>
+
           <div className="col-md-8">
-            <h3>{this.props.restName}</h3>
+            <h3>Order # {this.props.idOrder}</h3>
+            <div >
+              <label htmlFor=""><b>Client: </b></label>
+              <label htmlFor="">{this.props.username}</label>
+            </div>
+            <div >
+              <label htmlFor=""><b>Date: </b></label>
+              <label htmlFor="">{this.props.date}</label>
+            </div>
+
             {
               this.props.plates.map((d, i) => (
                 <div key={i}>

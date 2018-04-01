@@ -38,6 +38,10 @@ export default class SignupPage extends Component {
       });
       document.getElementById("signup-password").value = "";
       document.getElementById("signup-confirm-password").value = "";
+    } if(name === "") {
+      this.setState({
+        error: "Please enter a valid name"
+      });
     } else {
 
       Accounts.createUser({
@@ -54,7 +58,15 @@ export default class SignupPage extends Component {
             error: err.reason
           });
         } else {
-          this.props.history.push('/login');
+          this.setState({
+            error: "The User was created succesfully"
+          })
+          this.props.history.push({
+            pathname: "/login",
+            state: {
+              message: this.state.error
+            }
+          });
         }
       });
 
@@ -67,6 +79,7 @@ export default class SignupPage extends Component {
     const error = this.state.error;
     return (
       <div>
+
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
           <div className="container">
             <a className="navbar-brand" href="#">Stadium Eats</a>
@@ -83,7 +96,15 @@ export default class SignupPage extends Component {
           </div>
         </nav>
         <div className="container">
+          <div className="padUp">
+            <h1>
+              Register
+          </h1>
+          </div>
           <div className="card card-container">
+            {this.state.error !== "" ? <div class="alert alert-danger" role="alert">
+              {this.state.error}
+            </div> : ""}
             <img id="profile-img" className="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
             <p id="profile-name" className="profile-name-card"></p>
             <form id="login-form" className="form col-md-12 center-block" onSubmit={this.handleSubmit}>
@@ -113,7 +134,7 @@ export default class SignupPage extends Component {
             </form>
           </div>
         </div>
-      </div >
+      </div>
     );
   }
 }

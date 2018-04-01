@@ -35,9 +35,11 @@ class OrderListRestaurant extends React.Component {
             <OrderDetailRestaurant
               plates={d.items}
               state={d.state}
+              date={d.createdAt.toString()}
               price={d.price}
               restName={d.restaurantName}
               idOrder={d._id}
+              username={d.userName}
               key={i}
               onChange={this.onChange.bind(this)} />
           )}
@@ -51,8 +53,10 @@ class OrderListRestaurant extends React.Component {
               plates={d.items}
               state={d.state}
               price={d.price}
+              date={d.createdAt.toString()}
               restName={d.restaurantName}
               idOrder={d._id}
+              username={d.userName}
               key={i}
               onChange={this.onChange.bind(this)} />
           )}
@@ -68,6 +72,8 @@ class OrderListRestaurant extends React.Component {
               price={d.price}
               restName={d.restaurantName}
               idOrder={d._id}
+              date={d.createdAt.toString()}
+              username={d.userName}
               key={i}
               onChange={this.onChange.bind(this)} />
           )}
@@ -78,11 +84,14 @@ class OrderListRestaurant extends React.Component {
         <div className="container">
           {this.props.ordersPrep.map((d, i) =>
             <OrderDetailRestaurant
+              orderId={d._id}
               plates={d.items}
               state={d.state}
+              date={d.createdAt.toString()}
               price={d.price}
               restName={d.restaurantName}
               idOrder={d._id}
+              username={d.userName}
               key={i}
               onChange={this.onChange.bind(this)} />
           )}
@@ -112,6 +121,7 @@ class OrderListRestaurant extends React.Component {
             <option value="delivering">Delivering</option>
             <option value=""> No Filter </option>
           </select>
+          <hr />
         </div>
         <div>
           {this.renderOrder()}

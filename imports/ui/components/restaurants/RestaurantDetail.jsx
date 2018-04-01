@@ -88,7 +88,8 @@ export class RestaurantDetail extends Component {
     var prods = this.state.selectedItems;
     var total = this.calcularTotal();
     var resName = this.props.location.state.name;
-    Meteor.call("orders.insert", prods, total, resName);
+    console.log(Meteor.user().username);
+    Meteor.call("orders.insert", prods, total, resName, Meteor.user().username);
     alert("Order sent successfully");
   }
 
@@ -114,12 +115,18 @@ export class RestaurantDetail extends Component {
 
         <div className="container">
           <div className="row restName">
-            <h2>{this.props.location.state.name}2</h2>
+            <h2>{this.props.location.state.name}</h2>
           </div>
           <div className="row">
             <div className=" col-lg-8">
               {this.props.location.state.menu.map((d, i) =>
-                <MenuItem plateName={d.plateName} ingredients={d.ingredients} price={d.price} key={i} onClick={this.addItem} />)}
+                <MenuItem
+                  plateName={d.plateName}
+                  ingredients={d.ingredients}
+                  price={d.price}
+                  img={d.img}
+                  key={i}
+                  onClick={this.addItem} />)}
             </div>
             <div className="col-lg-4 order">
               <div className="container">

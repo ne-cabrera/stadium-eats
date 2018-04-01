@@ -18,10 +18,10 @@ export default class LoginPage extends Component {
         console.log(err.reason);
       } else {
 
-        this.props.history.push("/Home");
+        this.props.history.push("/");
       }
     });
-    this.props.history.push("/Home");
+    this.props.history.push("/");
 
   }
 
@@ -35,7 +35,7 @@ export default class LoginPage extends Component {
           error: err.reason
         });
       } else {
-        this.props.history.push("/");
+        this.props.history.push("/Home");
       }
     });
   }

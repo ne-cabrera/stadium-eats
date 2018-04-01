@@ -17,10 +17,10 @@ export default class SignupPage extends Component {
       if(err) {
         console.log(err.reason);
       } else {
-        this.props.history.push("/Home");
+        this.props.history.push("/");
       }
     });
-    this.props.history.push("/Home");
+    this.props.history.push("/");
 
   }
 

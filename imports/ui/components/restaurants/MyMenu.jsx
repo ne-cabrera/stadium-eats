@@ -4,17 +4,30 @@ import { Restaurantes } from "../../../api/restaurantes";
 import { withTracker } from "meteor/react-meteor-data";
 
 class MyMenu extends React.Component {
+  backHome(e) {
+    e.preventDefault();
+    Meteor.logout((err) => {
+      if(err) {
+        console.log(err.reason);
+      } else {
+        this.props.history.push("/Home");
+      }
+    });
+    this.props.history.push("/Home");
 
+  }
   handleSubmit(e) {
     e.preventDefault();
     let name = document.getElementById("plate-name").value;
-    let nprice = document.getElementById("plate-price").value;
+    let nprice = parseInt(document.getElementById("plate-price").value);
     let ningredients = document.getElementById("plate-ingredients").value;
+    let nImg = document.getElementById("plate-img").value;
     let id = this.props.restaurants[0]._id;
     let plate = {
       plateName: name,
       price: nprice,
-      ingredients: ningredients
+      ingredients: ningredients,
+      img: nImg
     };
     Meteor.call("restaurantes.insertMenu", plate, this.props.restaurants[0]._id);
     document.getElementById("plate-name").value = "";
@@ -27,37 +40,36 @@ class MyMenu extends React.Component {
     return (
       <div>
         <div>
-          <nav className="navbar navbar-expand-md  navbar-dark bg-dark">
-            <div className="container-fluid">
+          <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div className="container">
               <a className="navbar-brand" href="#">Stadium Eats</a>
-            </div>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <ul className="navbar-nav ml-auto">
-
-              <li className="nav-item">
-                <a href="#" className="nav-link" >Home</a>
-              </li>
-            </ul>
-            <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div className="navbar-nav navbar-right">
-                <a className="nav-item nav-link " href="#" >Logout</a>
+              <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+              </button>
+              <div className="collapse navbar-collapse" id="navbarResponsive">
+                <ul className="navbar-nav ml-auto">
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={this.backHome.bind(this)}>Home</a>
+                  </li>
+                </ul>
               </div>
             </div>
           </nav>
         </div>
         <div>
-          <div className="container">
+          <div className="container padUp">
+            <h1>Your Menu</h1>
+          </div>
+          <div className="container pad">
             <div className="row">
-              <div className="container menuContainer col-lg-5">
+              <div className="container  col-lg-6 padUp">
                 {this.props.restaurants[0].menu.map((d, i) =>
                   <MenuRestaurant plateName={d.plateName} ingredients={d.ingredients} price={d.price} key={i} />)
                 }
               </div>
-              <div className="container col-lg-5">
+              <div className="container col-lg-5 padUp">
                 <div className="row">
-                  <h3>Add Plate to your Menu</h3>
+                  <h3 className="padLeft">Add Plate to your Menu</h3>
 
                 </div>
                 <div className="row">
@@ -68,6 +80,9 @@ class MyMenu extends React.Component {
                     </div>
                     <div className="form-group">
                       <textarea className="form-control" name="ingredients" id="plate-ingredients" cols="47" rows="2" placeholder="Ingredients"></textarea>
+                    </div>
+                    <div className="form-group">
+                      <input type="text" id="plate-img" className="form-control input-lg" placeholder="Plate Image" />
                     </div>
                     <div className="form-group">
                       <input type="number" id="plate-price" className="form-control input-lg" placeholder="Price" />

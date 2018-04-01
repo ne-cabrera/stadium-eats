@@ -25,7 +25,7 @@ export default class MainPage extends Component {
     return (
       <div>
 
-        <div className="container">
+        <div className="container padUp">
           <h1 className="text-center">{loggedIn ? "Welcome " + this.props.currentUser : ""}</h1>
         </div>
         <div>

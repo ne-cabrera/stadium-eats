@@ -10,7 +10,11 @@ export default class MenuRestaurant extends React.Component {
       <div className="row border-bottom detail">
         <div className="col-md-4">
           <a href="">
-            <img className="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="" />
+            {(this.props.img === "" || this.props.img === undefined) ?
+              <img className="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="" /> :
+              <img className="img-fluid rounded mb-3 mb-md-0" src={this.props.img} alt="" />
+            }
+
           </a>
         </div>
         <div className="col-md-8">

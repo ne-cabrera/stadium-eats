@@ -22,7 +22,6 @@ export default class LoginPage extends Component {
       }
     });
     this.props.history.push("/");
-
   }
 
   handleSubmit(e) {
@@ -40,10 +39,29 @@ export default class LoginPage extends Component {
     });
   }
 
+  alert() {
+    if(this.state.error === "") {
+      return ("");
+    } else if(this.state.error !== "") {
+      return (
+        <div class="alert alert-danger" role="alert">
+          {this.state.error}
+        </div>
+      );
+    } else if(this.props.location.state.message !== "") {
+      <div class="alert alert-success" role="alert">
+        This is a success alert—check it out!
+      </div>
+    } else {
+      return ("");
+    }
+  }
+
   render() {
     const error = this.state.error;
     return (
       <div>
+
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
           <div className="container">
             <a className="navbar-brand" href="#">Stadium Eats</a>
@@ -59,8 +77,16 @@ export default class LoginPage extends Component {
             </div>
           </div>
         </nav>
+
         <div className="container">
+          <div className="padUp">
+            <h1>
+              Please Login
+          </h1>
+          </div>
+
           <div className="card card-container">
+            {this.alert()}
             <img id="profile-img" className="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
             <p id="profile-name" className="profile-name-card"></p>
             <form id="login-form" className="form col-md-12 center-block" onSubmit={this.handleSubmit}>

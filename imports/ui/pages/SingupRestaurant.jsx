@@ -84,6 +84,11 @@ export default class SingupRestaurant extends React.Component {
           </div>
         </nav>
         <div className="container">
+          <div className="padUp">
+            <h1>
+              Register
+          </h1>
+          </div>
           <div className="card card-container">
             <img id="profile-img" className="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
             <p id="profile-name" className="profile-name-card"></p>

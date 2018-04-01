@@ -85,33 +85,39 @@ export class RestaurantDetail extends Component {
             <div>
                 <ClientAppNav onClick={this.logout}/>
                 <div className="container">
-                    <div className="row restName">
-                        <h2>{this.props.location.state.name}</h2>
-                    </div>
-                    <div className="row">
-                        <div className=" col-lg-8">
-                            {this.props.location.state.menu.map((d, i) =>
-                                <MenuItem plateName={d.plateName} ingredients={d.ingredients} price={d.price} key={i} onClick={this.addItem} />)}
-                        </div>
-                        <div className="col-lg-4 order">
-                            <div className="container">
-                                <div className="row">
-                                    {this.state.selectedItems.length !== 0 ? <h3>Your Order:</h3> : <div></div>}
-                                </div>
-                                <div className="row">
-                                    <div className="container">
-                                        {this.state.selectedItems.map((d, i) =>
-                                            <Order plateName={d.plateName} price={d.price} amount={d.amount} onClick={this.removeItem} key={i} />
-                                        )}
-                                    </div>
-                                </div>
-                                {this.state.selectedItems.length === 0 ? <div></div> : (<Link to="/myOrders"> <ConfirmOrder total={this.calcularTotal()} onClick={this.confirmOrder} /> </Link>)}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          <div className="row restName">
+            <h2>{this.props.location.state.name}</h2>
+          </div>
+          <div className="row">
+            <div className=" col-lg-8">
+              {this.props.location.state.menu.map((d, i) =>
+                <MenuItem
+                  plateName={d.plateName}
+                  ingredients={d.ingredients}
+                  price={d.price}
+                  img={d.img}
+                  key={i}
+                  onClick={this.addItem} />)}
             </div>
+            <div className="col-lg-4 order">
+              <div className="container">
+                <div className="row">
+                  {this.state.selectedItems.length !== 0 ? <h3>Your Order:</h3> : <div></div>}
+                </div>
+                <div className="row">
+                  <div className="container">
+                    {this.state.selectedItems.map((d, i) =>
+                      <Order plateName={d.plateName} price={d.price} amount={d.amount} onClick={this.removeItem} key={i} />
+                    )}
+                  </div>
+                </div>
+                {this.state.selectedItems.length === 0 ? <div></div> : (<Link to="/myOrders"> <ConfirmOrder total={this.calcularTotal()} onClick={this.confirmOrder} /> </Link>)}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-        );
-    }
+    );
+  }
 }

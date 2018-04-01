@@ -18,7 +18,6 @@ export class Restaurant extends Component {
                         <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
                     </div>
                 </div>
-
             </div>
         );
     }

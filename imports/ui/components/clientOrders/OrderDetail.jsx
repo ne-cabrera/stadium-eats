@@ -7,30 +7,35 @@ export class OrderDetail extends Component{
 
     selectProgress(){
         if(this.props.state === "order received"){
-            return(<OrderProgress/>)
+            return(<OrderProgress/>);
         }
         else if(this.props.state === "preparing"){
-            return(<OrderProgressPreparing/>)
+            return(<OrderProgressPreparing/>);
         }
         else{
-            return(<OrderProgressDelivering/>)
+            return(<OrderProgressDelivering/>);
         }
     }
 
     render(){
         return(
-            <div className="orderContainer">
-                <div>
-                    <h4 className="restName">{this.props.restName}</h4>
-                    {this.props.plates.map( (d, i) => (
-                        <div key={i}>
-                            <p>({d.amount}){d.plateName}...   ${d.price}</p>
-                        </div>
-                    ))}
-                    <p>Total: ${this.props.price}</p>
-                </div>
-                <div>
-                    {this.selectProgress()}
+            <div className="row border-bottom detail">
+                <div className="col-md-8">
+                    <h3>{this.props.restName}</h3>
+                    {
+                        this.props.plates.map((d, i) => (
+                            <div key={i}>
+                                <p>({d.amount}) {d.plateName}...   ${d.price}</p>
+                            </div>
+                        ))
+                    }
+                    <div>
+
+                        <h6>Total: ${this.props.price}</h6>
+                    </div>
+                    <div>
+                        {this.selectProgress()}
+                    </div>
                 </div>
             </div>
         );

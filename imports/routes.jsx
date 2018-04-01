@@ -23,10 +23,10 @@ export const AppRoutes = () => (
       <Route path="/restaurantDetail" component={RestaurantDetail} />
       <Route path="/restaurants" component={RestaurantListPage} />
       <Route path="/signupRestaurant" component={SignupRestaurant} />
-      <Route path="/Home" component={HomePage} />
+      <Route path="/Home" component={App} />
       <Route path="/myMenu" component={MyMenu} />
       <Route path="/myOrders" component={OrdersList} />
-      <Route exact={true} path="/" component={App} />
+      <Route exact={true} path="/" component={HomePage} />
     </div>
   </Router>
 );

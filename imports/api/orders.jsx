@@ -21,7 +21,8 @@ Meteor.methods({
       price: total,
       clientId: this.userId,
       restaurantName: resName,
-      state: "order received"
+      state: "order received",
+      createdAt: new Date()
     });
   },
   "orders.changeState"(idOrder, stateOr) {

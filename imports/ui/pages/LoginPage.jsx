@@ -44,16 +44,18 @@ export default class LoginPage extends Component {
     const error = this.state.error;
     return (
       <div>
-        <nav className="navbar navbar-expand-md  navbar-dark bg-dark">
-          <div className="container-fluid">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+          <div className="container">
             <a className="navbar-brand" href="#">Stadium Eats</a>
-          </div>
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div className="navbar-nav navbar-right">
-              <a className="nav-item nav-link " href="#" onClick={this.backHome.bind(this)}>Back Home</a>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarResponsive">
+              <ul className="navbar-nav ml-auto">
+                <li className="nav-item">
+                  <a className="nav-link" href="#" onClick={this.backHome.bind(this)}>Home</a>
+                </li>
+              </ul>
             </div>
           </div>
         </nav>

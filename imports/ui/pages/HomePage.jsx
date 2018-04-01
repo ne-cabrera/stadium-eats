@@ -27,36 +27,42 @@ export default class HomePage extends React.Component {
   }
   render() {
     return (
-
       <div>
-
-        <nav className="navbar navbar-expand-md  navbar-dark bg-dark">
-          <div className="container-fluid">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+          <div className="container">
             <a className="navbar-brand" href="#">Stadium Eats</a>
-          </div>
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div className="navbar-nav navbar-right">
-              <a className="nav-item nav-link " href="#" onClick={this.login.bind(this)}>Login</a>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarResponsive">
+              <ul className="navbar-nav ml-auto">
+                <li className="nav-item ">
+                  <a className="nav-link" href="#">Home
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="#" onClick={this.login.bind(this)}>Login</a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="#" onClick={this.register.bind(this)}>Register</a>
+                </li>
+              </ul>
             </div>
           </div>
-          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div className="navbar-nav navbar-right">
-              <a className="nav-item nav-link " href="#" onClick={this.register.bind(this)}>Register</a>
-            </div>
-          </div>
-
         </nav>
-        <div >
-          <h1 className="t1">
-            Welcome to Stadium Eats
+        <div className="container">
+          <header className="jumbotron my-4">
+            <h1 className="display-3">Welcome to Stadium Eats</h1>
+            <p className="lead">Be Happy eating what you like, enjoying your sport event</p>
+            <a href="#" className="btn btn-primary btn-lg" onClick={this.register.bind(this)} >Register Now!</a>
+          </header>
+        </div>
+        <div className="container">
+          <div className="container">
+            <h1>
+              Restaurants
           </h1>
-          <h6 className="t2">
-            With our service you can ejoy your event without hunger.
-          </h6>
-          <hr />
+          </div>
           <RestaurantList />
         </div>
       </div>

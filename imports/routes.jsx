@@ -12,7 +12,7 @@ import HomePage from "./ui/pages/HomePage.jsx";
 import SignupRestaurant from "./ui/pages/SingupRestaurant.jsx";
 import { RestaurantDetail } from "./ui/components/restaurants/RestaurantDetail.jsx";
 import MyMenu from "./ui/components/restaurants/MyMenu.jsx";
-import RestaurantList from "./ui/components/restaurants/RestaurantList";
+import RestaurantListPage from "./ui/pages/RestaurantListPage";
 import OrdersList from "./ui/components/clientOrders/OrdersList";
 
 export const AppRoutes = () => (
@@ -21,7 +21,7 @@ export const AppRoutes = () => (
       <Route path="/login" component={LoginPage} />
       <Route path="/signup" component={SignupPage} />
       <Route path="/restaurantDetail" component={RestaurantDetail} />
-      <Route path="/restaurants" component={RestaurantList} />
+      <Route path="/restaurants" component={RestaurantListPage} />
       <Route path="/signupRestaurant" component={SignupRestaurant} />
       <Route path="/Home" component={HomePage} />
       <Route path="/myMenu" component={MyMenu} />

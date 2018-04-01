@@ -1,7 +1,24 @@
 /* CSS declarations go here */
 
 /*Home Page NavBar*/
-
+body {
+    padding-top: 54px;
+  }
+  
+  @media (min-width: 992px) {
+    body {
+      padding-top: 56px;
+    }
+  }
+  
+  .card {
+    height: 100%;
+  }
+  .pagination {
+    margin-bottom: 15px;
+  }
+  
+  
 nav {
     margin: auto 100;
     padding-bottom: 3.5rem;
@@ -10,6 +27,18 @@ nav {
 h1{
     text-align: center;
 }
+
+.detail{
+    padding-top: 25px;
+}
+
+/*Imagen Jumbotron*/
+.jumbotron{
+    background-image: url("");
+    background-size: cover; 
+}
+
+
 /*Login*/
 
 
@@ -235,4 +264,23 @@ h1{
   } 
   .progressbar li.active + li:after {
     background-color: green;
+  }
+
+  .row {
+    border-bottom-color: black;
+  }
+  .pad{
+      padding-bottom: 10px;
+  }
+
+  .padUp{
+      padding-top: 35px;
+  }
+
+  .padLeft{
+      padding-left: 16px;
+  }
+
+  .wid{
+      width: 40px;
   }

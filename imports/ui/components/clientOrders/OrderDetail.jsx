@@ -20,19 +20,33 @@ export class OrderDetail extends Component {
 
   render() {
     return (
-      <div className="orderContainer">
-        <div>
-          <h4 className="restName">{this.props.restName}</h4>
-          {this.props.plates.map((d, i) => (
-            <div key={i}>
-              <p>({d.amount}){d.plateName}...   ${d.price}</p>
+      <div>
+
+        <div className="row border-bottom detail" >
+          <div className="col-md-4">
+            <a href="">
+              <img className="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="" />
+            </a>
+          </div>
+          <div className="col-md-8">
+            <h3>{this.props.restName}</h3>
+            {
+              this.props.plates.map((d, i) => (
+                <div key={i}>
+                  <p>({d.amount}) {d.plateName}...   ${d.price}</p>
+                </div>
+              ))
+            }
+            <div>
+
+              <h6>Total: ${this.props.price}</h6>
             </div>
-          ))}
-          <p>Total: ${this.props.price}</p>
+            <div>
+              {this.selectProgress()}
+            </div>
+          </div>
         </div>
-        <div>
-          {this.selectProgress()}
-        </div>
+
       </div>
     );
   }

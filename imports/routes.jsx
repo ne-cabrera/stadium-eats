@@ -14,6 +14,7 @@ import { RestaurantDetail } from "./ui/components/restaurants/RestaurantDetail.j
 import MyMenu from "./ui/components/restaurants/MyMenu.jsx";
 import RestaurantListPage from "./ui/pages/RestaurantListPage";
 import OrdersList from "./ui/components/clientOrders/OrdersList";
+import {Location} from "./ui/components/location/Location";
 
 export const AppRoutes = () => (
     <Router>
@@ -23,13 +24,23 @@ export const AppRoutes = () => (
             <Route path="/restaurantDetail" component={RestaurantDetail} />
             <Route path="/restaurants" component={RestaurantListPage} />
             <Route path="/signupRestaurant" component={SignupRestaurant} />
-            <Route path="/Home" component={App} />
+            <Route path="/Home" render={() => {
+                return (localStorage.getItem("location") !== null ? (<App />) : (<Redirect to="/location"/>));
+            }}/>
             <Route path="/myMenu" component={MyMenu} />
             <Route path="/myOrders" component={OrdersList} />
             <Route exact={true} path="/" component={HomePage} />
+            <Route path="/location" component={Location}/>
             <Route exact path="/" render={()=>{
                 console.log(Meteor.userId());
-                return (Meteor.userId() === null ? (<HomePage />) : (<Redirect to="/Home"/>));
+                console.log(localStorage.getItem("location"));
+                if(localStorage.getItem("location") === null && Meteor.userId() !== null){
+                    return <Redirect to="/location"/>;
+                }
+                else{
+                    return (Meteor.userId() === null ? (<HomePage />) : (<Redirect to="/Home"/>));
+                }
+                
             }
             } />
         </div>

@@ -31,13 +31,7 @@ export const AppRoutes = () => (
             <Route exact path="/" render={()=>{
                 console.log(Meteor.userId());
                 console.log(localStorage.getItem("location"));
-                if(localStorage.getItem("location") === null && Meteor.userId() !== null){
-                    return <Redirect to="/location"/>;
-                }
-                else{
-                    return (Meteor.userId() === null ? (<HomePage />) : (<Redirect to="/Home"/>));
-                }
-                
+                return (Meteor.userId() === null ? (<HomePage />) : (<Redirect to="/Home"/>));
             }
             } />
         </div>

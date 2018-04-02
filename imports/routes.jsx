@@ -24,9 +24,7 @@ export const AppRoutes = () => (
             <Route path="/restaurantDetail" component={RestaurantDetail} />
             <Route path="/restaurants" component={RestaurantListPage} />
             <Route path="/signupRestaurant" component={SignupRestaurant} />
-            <Route path="/Home" render={() => {
-                return (localStorage.getItem("location") !== null ? (<App />) : (<Redirect to="/location"/>));
-            }}/>
+            <Route path="/Home" component={App}/>
             <Route path="/myMenu" component={MyMenu} />
             <Route path="/myOrders" component={OrdersList} />
             <Route path="/location" component={Location}/>

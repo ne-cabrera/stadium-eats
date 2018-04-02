@@ -11,8 +11,6 @@ class OrderListRestaurant extends React.Component {
   }
 
   onChange(idOr, stateO) {
-
-    console.log(idOr, stateO)
     Meteor.call("orders.changeState", idOr, stateO);
 
   }
@@ -20,7 +18,6 @@ class OrderListRestaurant extends React.Component {
   changeOrderState(e) {
     e.preventDefault();
     oState = e.target.value;
-    console.log(oState);
     this.setState({
       orderState: oState
     });
@@ -28,10 +25,6 @@ class OrderListRestaurant extends React.Component {
   }
 
   renderOrder() {
-    console.log(this.props.orders.location);
-    console.log(this.props.ordersDelive.location);
-    console.log(this.props.ordersPrep.location);
-    console.log(this.props.ordersReceived.location);
     if(this.state.orderState === "") {
       return (
         <div className="container">
@@ -122,9 +115,6 @@ class OrderListRestaurant extends React.Component {
 
 
   render() {
-    console.log(this.props.orders);
-    console.log(this.props.ordersFilter);
-    console.log(this.state);
     return (
       <div className="container">
         <div className="row">

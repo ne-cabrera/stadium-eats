@@ -282,6 +282,9 @@ h1{
   .padLeft{
       padding-left: 16px;
   }
+  .padl{
+      padding-left: 20px;
+  }
 
   .wid{
       width: 40px;

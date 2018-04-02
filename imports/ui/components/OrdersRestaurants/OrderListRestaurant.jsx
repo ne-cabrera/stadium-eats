@@ -28,6 +28,10 @@ class OrderListRestaurant extends React.Component {
   }
 
   renderOrder() {
+    console.log(this.props.orders.location);
+    console.log(this.props.ordersDelive.location);
+    console.log(this.props.ordersPrep.location);
+    console.log(this.props.ordersReceived.location);
     if(this.state.orderState === "") {
       return (
         <div className="container">
@@ -35,11 +39,15 @@ class OrderListRestaurant extends React.Component {
             <OrderDetailRestaurant
               plates={d.items}
               state={d.state}
-              date={d.createdAt.toString()}
               price={d.price}
+              date={d.createdAt.toString()}
               restName={d.restaurantName}
               idOrder={d._id}
               username={d.userName}
+              sector={d.sector}
+              stand={d.stand}
+              row={d.row}
+              sitnum={d.sitnum}
               key={i}
               onChange={this.onChange.bind(this)} />
           )}
@@ -57,6 +65,10 @@ class OrderListRestaurant extends React.Component {
               restName={d.restaurantName}
               idOrder={d._id}
               username={d.userName}
+              sector={d.sector}
+              stand={d.stand}
+              row={d.row}
+              sitnum={d.sitnum}
               key={i}
               onChange={this.onChange.bind(this)} />
           )}
@@ -70,10 +82,14 @@ class OrderListRestaurant extends React.Component {
               plates={d.items}
               state={d.state}
               price={d.price}
+              date={d.createdAt.toString()}
               restName={d.restaurantName}
               idOrder={d._id}
-              date={d.createdAt.toString()}
               username={d.userName}
+              sector={d.sector}
+              stand={d.stand}
+              row={d.row}
+              sitnum={d.sitnum}
               key={i}
               onChange={this.onChange.bind(this)} />
           )}
@@ -84,14 +100,17 @@ class OrderListRestaurant extends React.Component {
         <div className="container">
           {this.props.ordersPrep.map((d, i) =>
             <OrderDetailRestaurant
-              orderId={d._id}
               plates={d.items}
               state={d.state}
-              date={d.createdAt.toString()}
               price={d.price}
+              date={d.createdAt.toString()}
               restName={d.restaurantName}
               idOrder={d._id}
               username={d.userName}
+              sector={d.sector}
+              stand={d.stand}
+              row={d.row}
+              sitnum={d.sitnum}
               key={i}
               onChange={this.onChange.bind(this)} />
           )}
@@ -139,8 +158,8 @@ export default withTracker(() => {
   console.log(s, "soy s");
   return {
     orders: Orders.find({ restaurantName: owner }, { sort: { createdAt: -1 } }).fetch(),
-    ordersPrep: Orders.find({ state: "preparing" }, { sort: { createdAt: -1 } }).fetch(),
-    ordersDelive: Orders.find({ state: "delivering" }, { sort: { createdAt: -1 } }).fetch(),
-    ordersReceived: Orders.find({ state: "order received" }, { sort: { createdAt: -1 } }).fetch()
+    ordersPrep: Orders.find({ restaurantName: owner, state: "preparing" }, { sort: { createdAt: -1 } }).fetch(),
+    ordersDelive: Orders.find({ restaurantName: owner, state: "delivering" }, { sort: { createdAt: -1 } }).fetch(),
+    ordersReceived: Orders.find({ restaurantName: owner, state: "order received" }, { sort: { createdAt: -1 } }).fetch()
   };
 })(OrderListRestaurant);

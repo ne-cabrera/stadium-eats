@@ -12,7 +12,7 @@ if(Meteor.isServer) {
 }
 
 Meteor.methods({
-  "restaurantes.insert"(name, imgUrl) {
+  "restaurantes.insert"(name, imgUrl, stadiumT) {
     check(name, String);
     check(imgUrl, String);
     userRole = Meteor.users.findOne(this.userId).profile.role;
@@ -24,6 +24,7 @@ Meteor.methods({
       name: name,
       img: imgUrl,
       owner: this.userId,
+      stadium: stadiumT,
       menu: [{}]
     });
 

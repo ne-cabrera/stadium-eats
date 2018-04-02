@@ -9,7 +9,7 @@ export class OrderDetailRestaurant extends React.Component {
   }
 
   render() {
-
+    console.log(this.props.location);
     return (
 
       <div>
@@ -26,16 +26,46 @@ export class OrderDetailRestaurant extends React.Component {
               <label htmlFor=""><b>Date: </b></label>
               <label htmlFor="">{this.props.date}</label>
             </div>
+            <div>
+              <h4>
+                Location
+              </h4>
+            </div>
+
+            <div className="padl">
+              <div>
+                <label htmlFor=""><b>Sector:</b></label>
+                <label htmlFor="">{this.props.sector}</label>
+              </div>
+              <div>
+                <label htmlFor=""><b>Stand:</b></label>
+                <label htmlFor="">{this.props.stand}</label>
+              </div>
+              <div>
+                <label htmlFor=""><b>Row:</b></label>
+                <label htmlFor="">{this.props.row}</label>
+              </div>
+              <div>
+                <label htmlFor=""><b>Seat:</b></label>
+                <label htmlFor="">{this.props.sitnum}</label>
+              </div>
+            </div>
+
+            <div>
+              <h4>
+                Plates
+              </h4>
+            </div>
 
             {
               this.props.plates.map((d, i) => (
-                <div key={i}>
+                <div className="padl" key={i}>
                   <p>({d.amount}) {d.plateName}...   ${d.price}</p>
                 </div>
               ))
             }
             <div>
-              <h6>Total: ${this.props.price}</h6>
+              <h6><b>Total: </b>${this.props.price}</h6>
             </div>
             <div>
               <select className="custom-select wid" value={this.props.state} onChange={this.onChange.bind(this)}>

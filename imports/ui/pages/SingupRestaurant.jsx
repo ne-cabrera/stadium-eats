@@ -9,7 +9,8 @@ export default class SingupRestaurant extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            error: ""
+            error: "",
+            stadium: ""
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -27,6 +28,12 @@ export default class SingupRestaurant extends React.Component {
         this.props.history.push("/");
 
     }
+    onChange(e) {
+        e.preventDefault();
+        this.setState({
+            stadium: e.target.value
+        });
+    }
 
     handleSubmit(e) {
         e.preventDefault();
@@ -36,6 +43,7 @@ export default class SingupRestaurant extends React.Component {
         let phone = document.getElementById("signup-phone").value;
         let confPassword = document.getElementById("signup-confirm-password").value;
         let img = document.getElementById("signup-img").value;
+
         console.log(name, email, password, phone);
         if(password !== confPassword) {
             this.setState({
@@ -61,7 +69,7 @@ export default class SingupRestaurant extends React.Component {
                     this.props.history.push("/login");
                 }
             });
-            Meteor.call("restaurantes.insert", name, img);
+            Meteor.call("restaurantes.insert", name, img, this.state.stadium);
         }
     }
 
@@ -86,7 +94,7 @@ export default class SingupRestaurant extends React.Component {
                 <div className="container">
                     <div className="padUp">
                         <h1>
-              Register
+                            Register
                         </h1>
                     </div>
                     <div className="card card-container">
@@ -110,6 +118,14 @@ export default class SingupRestaurant extends React.Component {
                             </div>
                             <div className="form-group">
                                 <input type="password" id="signup-confirm-password" className="form-control input-lg" placeholder="Confirm Password" />
+                            </div>
+
+                            <div className="form-group text-center">
+                                <select className="custom-select wid" onChange={this.onChange.bind(this)}>
+                                    <option value="Campin">Nemesio Camacho el Campin</option>
+                                    <option value="Techo">Estadio Metropolitano de Techo</option>
+                                    <option value="Caneca">La Caneca</option>
+                                </select>
                             </div>
 
                             <div className="form-group text-center">

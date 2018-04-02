@@ -15,3 +15,5 @@ export class OrderProgress extends Component{
         );
     }
 }
+
+//Destaco el haber usado de gran forma los componentes al tener varias vistas y funcionalidades.

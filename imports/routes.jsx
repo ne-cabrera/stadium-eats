@@ -29,7 +29,6 @@ export const AppRoutes = () => (
             }}/>
             <Route path="/myMenu" component={MyMenu} />
             <Route path="/myOrders" component={OrdersList} />
-            <Route exact={true} path="/" component={HomePage} />
             <Route path="/location" component={Location}/>
             <Route exact path="/" render={()=>{
                 console.log(Meteor.userId());

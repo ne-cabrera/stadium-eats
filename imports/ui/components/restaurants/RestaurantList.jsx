@@ -24,7 +24,7 @@ class RestaurantList extends Component {
       return (
         <div className="row">
           {this.props.restaurants.map((d, i) =>
-            <Restaurant name={d.name} img={d.img} menu={d.menu} key={i} />
+            <Restaurant name={d.name} img={d.img} menu={d.menu} comment={d.comment} key={i} />
           )}
         </div>
       );
@@ -32,7 +32,7 @@ class RestaurantList extends Component {
       return (
         <div className="row">
           {this.props.restaurantsCampin.map((d, i) =>
-            <Restaurant name={d.name} img={d.img} menu={d.menu} key={i} />
+            <Restaurant name={d.name} img={d.img} menu={d.menu} comment={d.comment} key={i} />
           )}
         </div>
       );
@@ -40,7 +40,7 @@ class RestaurantList extends Component {
       return (
         <div className="row">
           {this.props.restaurantsCaneca.map((d, i) =>
-            <Restaurant name={d.name} img={d.img} menu={d.menu} key={i} />
+            <Restaurant name={d.name} img={d.img} menu={d.menu} comment={d.comment} key={i} />
           )}
         </div>
       );

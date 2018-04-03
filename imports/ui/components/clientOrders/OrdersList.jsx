@@ -7,6 +7,8 @@ import {RestaurantAppNav} from "../navs/RestaurantAppNav";
 
 class OrdersList extends Component {
 
+ //Se puede revisar este componente, cuando pido listar mis órdenes no las puedo ver
+    
     constructor(props){
         super(props);
         this.logout = this.logout.bind(this);

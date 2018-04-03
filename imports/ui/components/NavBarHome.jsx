@@ -1,6 +1,9 @@
 import React from "react";
 import { withHistory, Link } from "react-router-dom";
 export default class NavBarHome extends React.Component {
+  
+// Función que se encarga del login de los usuarios
+  
   login(e) {
     e.preventDefault();
     Meteor.logout((err) => {
@@ -13,6 +16,9 @@ export default class NavBarHome extends React.Component {
     this.props.history.push("/login");
 
   }
+  
+// Función que se encarga de registrar usuarios
+  
   register(e) {
     e.preventDefault();
     Meteor.logout((err) => {
@@ -25,6 +31,7 @@ export default class NavBarHome extends React.Component {
     this.props.history.push("/signup");
   }
 
+//Función render que crea parte del DOM
   render() {
     return (
       <nav className="navbar navbar-expand-md  navbar-dark bg-dark">

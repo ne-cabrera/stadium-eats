@@ -1,26 +1,26 @@
-import React, {Component} from "react";
-import {OrderProgress} from "./progress/OrderProgress";
-import {OrderProgressPreparing} from "./progress/OrderProgressPreparing";
-import {OrderProgressDelivering} from "./progress/OrderProgressDelivering";
+import React, { Component } from "react";
+import { OrderProgress } from "./progress/OrderProgress";
+import { OrderProgressPreparing } from "./progress/OrderProgressPreparing";
+import { OrderProgressDelivering } from "./progress/OrderProgressDelivering";
 
-export class OrderDetail extends Component{
+export class OrderDetail extends Component {
 
-    selectProgress(){
-        if(this.props.state === "order received"){
-            return(<OrderProgress/>);
+    selectProgress() {
+        if(this.props.state === "order received") {
+            return (<OrderProgress />);
         }
-        else if(this.props.state === "preparing"){
-            return(<OrderProgressPreparing/>);
+        else if(this.props.state === "preparing") {
+            return (<OrderProgressPreparing />);
         }
-        else{
-            return(<OrderProgressDelivering/>);
+        else {
+            return (<OrderProgressDelivering />);
         }
     }
 
-    render(){
-        return(
-            <div className="row border-bottom detail">
-                <div className="col-md-8">
+    render() {
+        return (
+            <div className=" border-bottom detail">
+                <div className="card">
                     <h3>{this.props.restName}</h3>
                     {
                         this.props.plates.map((d, i) => (

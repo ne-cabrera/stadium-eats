@@ -35,85 +35,94 @@ class OrderListRestaurant extends React.Component {
     if(this.state.orderState === "") {
       return (
         <div className="container">
-          {this.props.orders.map((d, i) =>
-            <OrderDetailRestaurant
-              plates={d.items}
-              state={d.state}
-              price={d.price}
-              date={d.createdAt.toString()}
-              restName={d.restaurantName}
-              idOrder={d._id}
-              username={d.userName}
-              sector={d.sector}
-              stand={d.stand}
-              row={d.row}
-              sitnum={d.sitnum}
-              key={i}
-              onChange={this.onChange.bind(this)} />
-          )}
+          <div className="row">
+            {this.props.orders.map((d, i) =>
+
+              <OrderDetailRestaurant
+                plates={d.items}
+                state={d.state}
+                price={d.price}
+                date={d.createdAt.toString()}
+                restName={d.restaurantName}
+                idOrder={d._id}
+                username={d.userName}
+                sector={d.sector}
+                stand={d.stand}
+                row={d.row}
+                sitnum={d.sitnum}
+                key={i}
+                onChange={this.onChange.bind(this)} />
+            )}
+          </div>
         </div>
       );
     } else if(this.state.orderState === "order received") {
       return (
         <div className="container">
-          {this.props.ordersReceived.map((d, i) =>
-            <OrderDetailRestaurant
-              plates={d.items}
-              state={d.state}
-              price={d.price}
-              date={d.createdAt.toString()}
-              restName={d.restaurantName}
-              idOrder={d._id}
-              username={d.userName}
-              sector={d.sector}
-              stand={d.stand}
-              row={d.row}
-              sitnum={d.sitnum}
-              key={i}
-              onChange={this.onChange.bind(this)} />
-          )}
+          <div className="row">
+            {this.props.ordersReceived.map((d, i) =>
+              <OrderDetailRestaurant
+                plates={d.items}
+                state={d.state}
+                price={d.price}
+                date={d.createdAt.toString()}
+                restName={d.restaurantName}
+                idOrder={d._id}
+                username={d.userName}
+                sector={d.sector}
+                stand={d.stand}
+                row={d.row}
+                sitnum={d.sitnum}
+                key={i}
+                onChange={this.onChange.bind(this)} />
+            )}
+          </div>
         </div>
       );
     } else if(this.state.orderState === "delivering") {
       return (
         <div className="container">
-          {this.props.ordersDelive.map((d, i) =>
-            <OrderDetailRestaurant
-              plates={d.items}
-              state={d.state}
-              price={d.price}
-              date={d.createdAt.toString()}
-              restName={d.restaurantName}
-              idOrder={d._id}
-              username={d.userName}
-              sector={d.sector}
-              stand={d.stand}
-              row={d.row}
-              sitnum={d.sitnum}
-              key={i}
-              onChange={this.onChange.bind(this)} />
-          )}
+          <div className="row">
+            {this.props.ordersDelive.map((d, i) =>
+              <OrderDetailRestaurant
+                plates={d.items}
+                state={d.state}
+                price={d.price}
+                date={d.createdAt.toString()}
+                restName={d.restaurantName}
+                idOrder={d._id}
+                username={d.userName}
+                sector={d.sector}
+                stand={d.stand}
+                row={d.row}
+                sitnum={d.sitnum}
+                key={i}
+                onChange={this.onChange.bind(this)} />
+            )}
+          </div>
         </div>
       );
     } else if(this.state.orderState === "preparing") {
       return (
         <div className="container">
-          {this.props.ordersPrep.map((d, i) =>
-            <OrderDetailRestaurant
-              plates={d.items}
-              state={d.state}
-              price={d.price}
-              date={d.createdAt.toString()}
-              restName={d.restaurantName}
-              idOrder={d._id}
-              username={d.userName}
-              sector={d.sector}
-              stand={d.stand}
-              row={d.row}
-              sitnum={d.sitnum}
-              key={i}
-              onChange={this.onChange.bind(this)} />
-          )}
+          <div className="row">
+            {this.props.ordersPrep.map((d, i) =>
+              <OrderDetailRestaurant
+                plates={d.items}
+                state={d.state}
+                price={d.price}
+                date={d.createdAt.toString()}
+                restName={d.restaurantName}
+                idOrder={d._id}
+                username={d.userName}
+                sector={d.sector}
+                stand={d.stand}
+                row={d.row}
+                sitnum={d.sitnum}
+                key={i}
+                onChange={this.onChange.bind(this)} />
+            )}
+          </div>
         </div>
 
       );

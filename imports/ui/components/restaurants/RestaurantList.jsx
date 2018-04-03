@@ -48,7 +48,7 @@ class RestaurantList extends Component {
       return (
         <div className="row">
           {this.props.restaurantsTecho.map((d, i) =>
-            <Restaurant name={d.name} img={d.img} menu={d.menu} key={i} />
+            <Restaurant name={d.name} img={d.img} menu={d.menu} comment={d.comment} key={i} />
           )}
         </div>
       );

@@ -1,24 +1,24 @@
-import React, {Component} from "react";
-import {Link} from "react-router-dom";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
-export class HomeNav extends Component{
+export class HomeNav extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.handleLogin = this.handleLogin.bind(this);
         this.handleRegister = this.handleRegister.bind(this);
     }
 
-    handleLogin(){
+    handleLogin() {
         this.props.onLogin();
     }
 
-    handleRegister(){
+    handleRegister() {
         this.props.onRegister();
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
                 <div className="container">
                     <a className="navbar-brand" href="#">Stadium Eats</a>

@@ -289,3 +289,46 @@ h1{
   .wid{
       width: 40px;
   }
+
+  .car1{
+    background-image: url('http://placehold.it/1900x1080');
+  }
+  .car2{
+    background-image: url('http://placehold.it/1900x1080');
+
+  }
+  .car3{
+    background-image: url('http://placehold.it/1900x1080');
+  }
+
+  .carousel-item {
+    height: 65vh;
+    min-height: 300px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  
+  .portfolio-item {
+    margin-bottom: 30px;
+  }
+
+  .myImg{
+      
+  
+  }
+
+  .jumbotron {
+    /* Image in the center of container */
+   
+    /*  OR Image in the center top of the container */
+    /*  OR Image in the center bottom of the container  */
+    background-size: cover;
+    height:450px;
+}
+
+.navbar{
+    background-color: #d47463;
+}

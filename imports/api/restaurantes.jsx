@@ -39,6 +39,14 @@ Meteor.methods({
     Restaurantes.update(restaurantId, {
       $push: { menu: plate }
     });
+  },
+  "restaurantes.uploadPic"(pic) {
+    check(pic, String);
+    userRole = Meteor.users.findOne(this.userId).profile.role;
+    if(!this.userId || userRole !== "restaurant") {
+      throw new Meteor.Error("not-authorized");
+    }
+    Restaurantes.update({ owner: this.userId }, { $set: { img: pic } });
   }
 });
 

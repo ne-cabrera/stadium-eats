@@ -4,53 +4,62 @@ import { withHistory, Link } from "react-router-dom";
 import { HomeNav } from "../components/navs/HomeNav";
 export default class HomePage extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.login = this.login.bind(this);
-        this.register = this.register.bind(this);
-    }
-    login() {
-        Meteor.logout((err) => {
-            if(err) {
-                console.log(err.reason);
-            }
-        });
+  constructor(props) {
+    super(props);
+    this.login = this.login.bind(this);
+    this.register = this.register.bind(this);
+  }
+  login() {
+    Meteor.logout((err) => {
+      if(err) {
+        console.log(err.reason);
+      }
+    });
 
-    }
-    register() {
-        Meteor.logout((err) => {
-            if(err) {
-                console.log(err.reason);
-            }
-        });
-    }
-    render() {
-        return (
-            <div>
-                <HomeNav onLogin={this.login} onRegister={this.register} />
+  }
+  register() {
+    Meteor.logout((err) => {
+      if(err) {
+        console.log(err.reason);
+      }
+    });
+  }
+  render() {
+    return (
+      <div>
+        <HomeNav onLogin={this.login} onRegister={this.register} />
 
-                <div className="container">
-                    <header className="jumbotron my-4">
-                        <h1 className="display-10">Welcome to Stadium Eats</h1>
-                        <p className="lead padUp ">Be Happy eating what you like, enjoying your sport event</p>
-                        <p className="lead  ">We connect fans and restaurants</p>
-                        <div className="wrapper">
-                            <Link to="/signup" className="btn btn-primary btn-lg align" onClick={this.register} >Register Now!</Link>
-                        </div>
+        <div className="header-1">
+          <div className="page-header">
+            <div className="filter"></div>
+            <div className="content-center">
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-5">
+                  </div>
+                  <div className="col-md-6  ml-auto">
+                    <h2 className="title">Travel with us</h2>
+                    <h5 className="description">There's no doubt that Tesla is delighted with the interest, but the data also raises a few questions. How long will it take for Tesla to fulfill all those extra orders?</h5>
+                    <br />
 
-                    </header>
+                  </div>
                 </div>
-
-                <div className="container">
-                    <div className="container">
-                        <h1>
-                            Restaurants
-                        </h1>
-                    </div>
-                    <RestaurantList />
-                </div>
+              </div>
             </div>
-        );
+          </div>
+        </div>
 
-    }
+
+        <div className="container">
+          <div className="container">
+            <h1>
+              Restaurants
+                        </h1>
+          </div>
+          <RestaurantList />
+        </div>
+      </div>
+    );
+
+  }
 }

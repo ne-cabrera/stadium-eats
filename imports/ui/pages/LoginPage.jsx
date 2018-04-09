@@ -62,13 +62,19 @@ export default class LoginPage extends Component {
     return (
       <div>
 
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <nav className="navbar navbar-expand-lg fixed-top nav-down" >
           <div className="container">
-            <a className="navbar-brand" href="#">Stadium Eats</a>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarResponsive">
+            <div className="navbar-translate">
+              <div className="navbar-header">
+                <a href="" className="navbar-brand">Stadium Eats</a>
+              </div>
+              <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-bar"></span>
+                <span class="navbar-toggler-bar"></span>
+                <span class="navbar-toggler-bar"></span>
+              </button>
+            </div>
+            <div className="collapse navbar-collapse">
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
                   <a className="nav-link" href="#" onClick={this.backHome.bind(this)}>Home</a>

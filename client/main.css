@@ -329,6 +329,63 @@ h1{
     height:450px;
 }
 
-.navbar{
-    background-color: #d47463;
+.navbar, h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, p, .navbar, .brand, a, .td-name, td, button, input, select, textarea{
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Montserrat", "Helvetica", Arial, sans-serif;
+    font-weight: 300;
+}
+
+.navbar-toggle {
+    outline: 0 !important;
+  }
+  .navbar .navbar-brand {
+    font-weight: 600;
+    margin: 5px 0px;
+    padding: 20px 15px;
+    font-size: 14px;
+    color: #66615B;
+    text-transform: uppercase;
+}
+
+.navbar {
+    border: 0;
+    font-size: 14px;
+    transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    padding: 0;
+    background: #ffff ;
+    box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);
+    height: 60px;
+
+}
+.navbar .navbar-nav .nav-item .nav-link {
+    line-height: 1.6;
+    margin: 15px 3px;
+    padding: 10px 15px;
+    opacity: .8;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #66615B;
+
+}
+
+.page-header {
+    background-image: url("https://images.pexels.com/photos/61143/pexels-photo-61143.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background-color: #B2AFAB;
+    background-position: center center;
+    background-size: cover;
+    min-height: 100vh;
+    max-height: 500px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+}
+body {
+    color: #66615b;
+    font-size: 14px;
+    font-weight: 300;
+    font-family: 'Montserrat', "Helvetica", Arial, sans-serif;
 }

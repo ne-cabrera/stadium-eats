@@ -56,7 +56,6 @@ class RestaurantList extends Component {
   }
 
   render() {
-    console.log(this.props.restaurants);
     return (
       <div className="container">
         <div className="container">

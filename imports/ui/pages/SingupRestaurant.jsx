@@ -82,11 +82,20 @@ export default class SingupRestaurant extends React.Component {
       });
       Meteor.call("restaurantes.insert", name, this.state.stadium);
       if(this.state.img[0] && this.state.img) {
+        var uploader = new Slingshot.Upload("projectPhotos");
         let FR = new FileReader();
         FR.onload = (data) => {
           console.log(data.target.result);
-          Meteor.call("restaurantes.uploadPic", data.target.result);
-        }
+          uploader.send(this.state.img[0], function(error, downloadUrl) {
+            if(error) {
+              alert(error);
+            } else {
+              Meteor.call("restaurantes.uploadPic", downloadUrl);
+
+            }
+          });
+
+        };
         FR.readAsDataURL(this.state.img[0]);
       }
     }

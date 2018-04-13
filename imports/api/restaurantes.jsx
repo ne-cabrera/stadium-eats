@@ -25,7 +25,7 @@ Meteor.methods({
       img: imgUrl,
       owner: this.userId,
       stadium: stadiumT,
-      menu: [{}]
+      menu: []
     });
 
   },

@@ -344,7 +344,7 @@ h1{
     margin: 5px 0px;
     padding: 20px 15px;
     font-size: 14px;
-    color: #66615B;
+    color: #fff;
     text-transform: uppercase;
 }
 
@@ -354,9 +354,9 @@ h1{
     transition: all 0.4s;
     -webkit-transition: all 0.4s;
     padding: 0;
-    background: #ffff ;
+    background: #eb203f;
     box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);
-    height: 60px;
+    height: 57px;
 
 }
 .navbar .navbar-nav .nav-item .nav-link {
@@ -367,25 +367,152 @@ h1{
     font-size: 12px;
     text-transform: uppercase;
     font-weight: 600;
-    color: #66615B;
+    color: #fff;
 
 }
-
+/*Header*/
 .page-header {
-    background-image: url("https://images.pexels.com/photos/61143/pexels-photo-61143.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
-    background-color: #B2AFAB;
+    background-image: url("https://images.pexels.com/photos/303353/pexels-photo-303353.jpeg?cs=srgb&dl=action-adult-american-football-303353.jpg&fm=jpg");
+    background-color:  #fff;
     background-position: center center;
     background-size: cover;
-    min-height: 100vh;
-    max-height: 500px;
+    min-height: 60vh;
+    max-height: 100px;
     overflow: hidden;
     position: relative;
+    padding-top: 0%;
     width: 100%;
+    height: 100px;
     z-index: 1;
+}
+.stadium-form-component{
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    text-align: center;
+    padding: 2rem 1.2rem 0 1.2rem;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main-tittle{
+    font-size: 3rem;
+    line-height: 1.13;
+    margin: 0;
+    margin-bottom: 0.9rem;
+    color: #fff;
+    
+}
+.second-tittle{
+    font-size: 1.3rem;
+    margin: 0;
+    margin-bottom: 2.2rem;
+    font-weight: 600;
+    color:#fff;
+}
+.form-stadium{
+    background-color: rgba(255, 255, 255, 0.16);
+    padding: 2rem;
+    border-radius: 0.8rem;
+}
+.form-stad1{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.input-name{
+    border-color: rgb(104, 145, 162);
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+}
+.stad-name{
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    z-index: 1;
+    position: relative;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.searchStadium{
+  
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    z-index: 1;
+    position: relative;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.form-group2 {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    z-index: 1;
+    position: relative;
+   
+
+}
+.main-btn{
+    height: 40px;
+    width: 100px;
+    text-align: center;
+    padding: 0px;
+    background-color: #2ecc71;
 }
 body {
     color: #66615b;
     font-size: 14px;
     font-weight: 300;
     font-family: 'Montserrat', "Helvetica", Arial, sans-serif;
+}
+
+.home-left-card {
+    border-radius: 4px;
+    border: 1px solid rgba(0,0,0,.12);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.tittle-filter{
+    opacity: .87;
+    font-size: 1.6rem;
+
+}
+
+.view-filters__header {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+.view-filters__title {
+    opacity: .54;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+.checkbox{
+    position: relative;
+    display: inline-block;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    outline: 0;
+    vertical-align: baseline;
+    font-style: normal;
+    min-height: 17px;
+    font-size: 1rem;
+    line-height: 17px;
+    min-width: 17px;
+    margin-bottom: 1.5rem;
+}
+.resta{
+    padding-top: 50px;
+    padding-bottom: 30px;
+ 
 }

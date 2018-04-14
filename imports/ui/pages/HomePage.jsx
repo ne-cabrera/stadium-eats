@@ -61,22 +61,19 @@ export default class HomePage extends React.Component {
             </div>
           </div>
         </div>
-        <div className="container resta">
+        <div className="container resta card">
           <div className="row">
-            <div className="col-md-2">
-              <Filters />
-            </div>
-            <div className=" col-md-8 container">
-              <div className="container">
-                <h1>
-                  Restaurants
-                        </h1>
-              </div>
-              <RestaurantList />
-            </div>
-          </div>
 
+
+            <div className="container">
+              <h1 className="main-tit">
+                Restaurants
+               </h1>
+            </div>
+            <RestaurantList />
+          </div>
         </div>
+
 
       </div>
     );

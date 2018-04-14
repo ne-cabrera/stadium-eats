@@ -59,17 +59,21 @@ class RestaurantList extends Component {
     return (
       <div className="container">
         <div className="container">
-          <div>
-            <h2>
-              Select Your Current Stadium
-            </h2>
+          <div className="row">
+            <div className="col-md-12">
+              <h2 className="main-tit padDow">Custom search field</h2>
+              <div id="custom-search-input">
+                <div className="input-group col-md-12">
+                  <input type="text" className="form-control input-lg" placeholder="Buscar" />
+                  <span className="input-group-btn">
+                    <button className="btn btn-info btn-lg" type="button">
+                      <i className="glyphicon glyphicon-search"></i>
+                    </button>
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
-          <select className="custom-select wid" value={this.props.state} onChange={this.onChange.bind(this)}>
-            <option value="All">All</option>
-            <option value="Campin">Nemesio Camacho el Campin</option>
-            <option value="Techo">Estadio Metropolitano de Techo</option>
-            <option value="Caneca">La Caneca</option>
-          </select>
         </div>
         <div>
           {this.renderRestaurantsStadium()}

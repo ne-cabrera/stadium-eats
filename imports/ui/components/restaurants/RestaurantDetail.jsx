@@ -6,6 +6,7 @@ import { Orders } from "../../../api/orders";
 import { Meteor } from "meteor/meteor";
 import { Link } from "react-router-dom";
 import { ClientAppNav } from "../navs/ClientAppNav";
+import { HeaderRestaurant } from "../HeaderRestaurant";
 
 export class RestaurantDetail extends Component {
   constructor(props) {
@@ -119,12 +120,14 @@ export class RestaurantDetail extends Component {
     return (
       <div>
         <ClientAppNav onClick={this.logout} />
+
+        <HeaderRestaurant />
         <div className="container">
           <div className="row restName">
-            <h2>{this.props.location.state.name}</h2>
+            <h2 className="padUp">{this.props.location.state.name}</h2>
           </div>
           <div className="row">
-            <div className=" col-lg-8">
+            <div className="col-lg-4 col-md-6 mb-4">
               {this.props.location.state.menu.map((d, i) =>
                 <MenuItem
                   plateName={d.plateName}
@@ -134,6 +137,8 @@ export class RestaurantDetail extends Component {
                   key={i}
                   onClick={this.addItem} />)}
             </div>
+
+
             <div className="col-lg-4 order">
               <div className="container">
                 <div className="row">

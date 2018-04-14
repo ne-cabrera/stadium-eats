@@ -12,10 +12,10 @@ export class Restaurant extends Component {
             <img className="restImg card-img-top" src={this.props.img} alt="Restaurant Logo or picture" />
           </Link>
           <div className="card-body">
-            <Link to={{ pathname: "/restaurantDetail", state: { name: this.props.name, menu: this.props.menu } }}>
-              <h4 className="card-title restName"> {this.props.name} </h4>
-            </Link>
+            <h4 className="card-title  restName linkclean"> {this.props.name} </h4>
+            <h6 className="card-subtitle mb-2 text-muted subtit">Description</h6>
             <p className="card-text">{this.props.comment}</p>
+
           </div>
         </div>
       </div>

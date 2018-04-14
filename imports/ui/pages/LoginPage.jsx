@@ -103,7 +103,7 @@ export default class LoginPage extends Component {
                 <input type="password" id="login-password" className="form-control input-lg" placeholder="password" />
               </div>
               <div className="form-group text-center">
-                <input type="submit" id="login-button" className="btn btn-dark btn-lg btn-block" value="Login" />
+                <input type="submit" id="login-button" className="btn btn-success btn-lg btn-block" value="Login" />
               </div>
               <div className="form-group text-center">
                 <p className="text-center">Don't have an account? Register <Link to="/signup">here</Link></p>

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withHistory, Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import RestaurantList from "../components/restaurants/RestaurantList.jsx";
-
+import { HeaderRestaurant } from "../components/HeaderRestaurant";
 export default class MainPage extends Component {
     constructor(props) {
         super(props);

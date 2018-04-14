@@ -157,7 +157,7 @@ export default class SingupRestaurant extends React.Component {
               </div>
 
               <div className="form-group text-center">
-                <input type="submit" id="login-button" className="btn btn-dark btn-lg btn-block" value="Register" />
+                <input type="submit" id="login-button" className="btn btn-success btn-lg btn-block" value="Register" />
               </div>
               <div className="form-group text-center">
                 <p className="text-center">Do you have an account? Log in <Link to="/login">here</Link></p>

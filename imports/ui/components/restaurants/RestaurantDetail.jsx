@@ -122,12 +122,9 @@ export class RestaurantDetail extends Component {
         <ClientAppNav onClick={this.logout} />
 
         <HeaderRestaurant />
-        <div className="container">
-          <div className="row restName">
-            <h2 className="padUp">{this.props.location.state.name}</h2>
-          </div>
-          <div className="row">
-            <div className="col-lg-4 col-md-6 mb-4">
+        <div className="row restContainer">
+          <div className="col-md-7 restContainer">
+            <div className="row">
               {this.props.location.state.menu.map((d, i) =>
                 <MenuItem
                   plateName={d.plateName}
@@ -139,79 +136,46 @@ export class RestaurantDetail extends Component {
             </div>
 
 
-            <div className="col-lg-4 order">
-              <div className="container">
+          </div>
+          <div className="">
+            <div className="order">
+              <div data-spy="affix">
                 <div className="row">
-                  {this.state.selectedItems.length !== 0 ? <h3>Your Order:</h3> : <div></div>}
+                  {this.state.selectedItems.length !== 0 ?
+                    (
+                      <div className="card">
+                        <h3 className="order-tit"><b>Your Order:</b></h3>
+                        <div className="row ">
+                          <div className="container">
+                            {this.state.selectedItems.map((d, i) =>
+                              <Order plateName={d.plateName} price={d.price} amount={d.amount} onClick={this.removeItem} key={i} />
+                            )}
+                          </div>
+                          {this.state.selectedItems.length === 0 ? <div></div> :
+                            (<Link to={
+                              {
+                                pathname: "/confirmOrderPage",
+                                state:
+                                  {
+                                    selectedItems: this.state.selectedItems,
+                                    total: this.calcularTotal(),
+                                    resName: this.props.location.state.name
+                                  }
+                              }}>
+                              <ConfirmOrder total={this.calcularTotal()} /> </Link>)}
+                        </div>
+                      </div>
+                    )
+                    : <div></div>}
                   {this.state.err !== "" ?
                     <div class="alert alert-danger" role="alert">
                       {this.state.err}
                     </div> :
                     ""}
                 </div>
-                <div className="row">
-                  <div className="container">
-                    {this.state.selectedItems.map((d, i) =>
-                      <Order plateName={d.plateName} price={d.price} amount={d.amount} onClick={this.removeItem} key={i} />
-                    )}
-                  </div>
-                  <div className="row">
-                    <div className="container">
-                      {this.state.selectedItems.length !== 0 ?
-                        <div>
-                          <div>
-                            <h3>
-                              Your Location
-                          </h3>
-                          </div>
-                          <form id="location-form" className="form col-md-12 center-block" >
-                            <div>
-                              <label htmlFor="">
-                                <p>Sector</p>
-                              </label>
-                            </div>
-                            <div className="form-group">
-                              <select className="custom-select wid" id="sector " onChange={this.onChange1.bind(this)}>
-                                <option value="North">North</option>
-                                <option value="South">South</option>
-                                <option value="East">East</option>
-                                <option value="West">West</option>
-                              </select>
-                            </div>
-                            <div>
-                              <label htmlFor="">
-                                <p>Stand</p>
-                              </label>
-                            </div>
-                            <div className="form-group">
-                              <select className="custom-select wid" id="stand" onChange={this.onChange2.bind(this)}>
-                                <option value="North">High</option>
-                                <option value="South">Low</option>
-                              </select>
-                            </div>
-                            <div>
-                              <label>
-                                <p>Row</p>
-                              </label>
-                            </div>
-                            <div className="form-group">
-                              <input type="text" id="rowT" className="form-control input-lg" placeholder="Row" />
-                            </div>
-                            <div>
-                              <label htmlFor="">
-                                <p>Seat Number</p>
-                              </label>
-                            </div>
-                            <div className="form-group">
-                              <input type="number" id="sitnum" className="form-control input-lg" placeholder="Sit Number" />
-                            </div>
-                          </form>
-                        </div>
-                        : ""}
-                    </div>
-                  </div>
-                </div>
-                {this.state.selectedItems.length === 0 ? <div></div> : (<Link to="/myOrders"> <ConfirmOrder total={this.calcularTotal()} onClick={this.confirmOrder} /> </Link>)}
+
+
+
               </div>
             </div>
           </div>

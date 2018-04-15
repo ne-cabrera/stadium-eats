@@ -14,6 +14,7 @@ import { RestaurantDetail } from "./ui/components/restaurants/RestaurantDetail.j
 import MyMenu from "./ui/components/restaurants/MyMenu.jsx";
 import RestaurantListPage from "./ui/pages/RestaurantListPage";
 import OrdersList from "./ui/components/clientOrders/OrdersList";
+import ConfirmOrderPage from "./ui/pages/ConfirmOrderPage";
 
 export const AppRoutes = () => (
     <Router>
@@ -26,6 +27,7 @@ export const AppRoutes = () => (
             <Route path="/Home" component={App} />
             <Route path="/myMenu" component={MyMenu} />
             <Route path="/myOrders" component={OrdersList} />
+            <Route path="/confirmOrderPage" component={ConfirmOrderPage} />
             <Route exact={true} path="/" component={HomePage} />
         </div>
     </Router>

@@ -12,7 +12,8 @@ body {
   }
   
   .card {
-    height: 100%;
+    height: 85%;
+    width: 18rem;
   }
   .pagination {
     margin-bottom: 15px;
@@ -186,6 +187,10 @@ h1{
 .restContainer{
     margin-top: 20px;
     text-align: center;
+
+}
+.restContainer2{
+    padding-bottom: 10px;
 }
 
 .menuItem {
@@ -208,6 +213,11 @@ h1{
 
 .order{
     margin-bottom: 20px;
+    padding-left: 200px;
+    padding-top: 55px;
+   
+    position: sticky;
+    top: 0;
 }
 
 .orderContainer{
@@ -580,4 +590,54 @@ body {
 
 .padDow{
     padding-bottom: 15px;
+}
+
+.plate-name{
+    font-size: 20px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: capitalize;
+    text-align: left;
+}
+.subtit{
+    font-size: 14px;
+}
+.sizeC{
+    height: auto;
+}
+
+.sideSticky{
+    width: 130px;
+    position: fixed;
+    z-index: 1;
+    top: 20px;
+    left: 10px;
+    background: #eee;
+    overflow-x: hidden;
+    padding: 8px 0;
+}
+
+
+.card-img-top{
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+.affix {
+    top: 0;
+    width: 100%;
+    z-index: 9999 !important;
+}
+.order-tit{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight:bolder;
+}
+.cardS{
+    height: auto;
+    width: 200%;
+}
+.order-info{
+    padding-left: 50px;
+    padding-right: 300px;
 }

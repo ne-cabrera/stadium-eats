@@ -7,7 +7,7 @@ export class Restaurant extends Component {
   render() {
     return (
       <div className="col-lg-4 restContainer">
-        <div className="card">
+        <div className="card ">
           <Link to={{ pathname: "/restaurantDetail", state: { name: this.props.name, menu: this.props.menu } }}>
             <img className="restImg card-img-top" src={this.props.img} alt="Restaurant Logo or picture" />
           </Link>

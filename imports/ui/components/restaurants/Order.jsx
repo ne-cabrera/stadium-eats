@@ -46,10 +46,10 @@ export class Order extends Component {
                 </div>
                 <div className="col-md-6">
                     <div>
-            ${this.props.price}
+                        ${this.props.price}
                     </div>
                     <div className="amount">
-            amount: {this.props.amount}
+                        amount: {this.props.amount}
                     </div>
                 </div>
             </div>

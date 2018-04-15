@@ -641,3 +641,8 @@ body {
     padding-left: 50px;
     padding-right: 300px;
 }
+
+.cardOrder{
+    height: auto;
+    width: 100%;
+}

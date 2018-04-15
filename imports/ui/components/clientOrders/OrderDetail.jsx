@@ -5,39 +5,42 @@ import { OrderProgressDelivering } from "./progress/OrderProgressDelivering";
 
 export class OrderDetail extends Component {
 
-    selectProgress() {
-        if(this.props.state === "order received") {
-            return (<OrderProgress />);
-        }
-        else if(this.props.state === "preparing") {
-            return (<OrderProgressPreparing />);
-        }
-        else {
-            return (<OrderProgressDelivering />);
-        }
+  selectProgress() {
+    if(this.props.state === "order received") {
+      return (<OrderProgress />);
     }
+    else if(this.props.state === "preparing") {
+      return (<OrderProgressPreparing />);
+    }
+    else {
+      return (<OrderProgressDelivering />);
+    }
+  }
 
-    render() {
-        return (
-            <div className=" border-bottom detail">
-                <div className="card">
-                    <h3>{this.props.restName}</h3>
-                    {
-                        this.props.plates.map((d, i) => (
-                            <div key={i}>
-                                <p>({d.amount}) {d.plateName}...   ${d.price}</p>
-                            </div>
-                        ))
-                    }
-                    <div>
-
-                        <h6>Total: ${this.props.price}</h6>
-                    </div>
-                    <div>
-                        {this.selectProgress()}
-                    </div>
+  render() {
+    return (
+      <div>
+        <div className=" border-bottom detail">
+          <div className="card cardOrder">
+            <h3>{this.props.restName}</h3>
+            {
+              this.props.plates.map((d, i) => (
+                <div key={i}>
+                  <p>({d.amount}) {d.plateName}...   ${d.price}</p>
                 </div>
+              ))
+            }
+            <div>
+
+              <h6>Total: ${this.props.price}</h6>
             </div>
-        );
-    }
+            <div>
+              {this.selectProgress()}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    );
+  }
 }

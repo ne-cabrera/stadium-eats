@@ -24,8 +24,9 @@ nav {
     margin: auto 100;
     padding-bottom: 3.5rem;
 }
-p{
-    font-family: 'Cardo', serif;
+label, p{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
 }
 
 h1{
@@ -170,7 +171,7 @@ h1{
 }
 
 .restName {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Karla', sans-serif;
     text-transform: capitalize;
     text-align: left;
     color: black;
@@ -180,7 +181,7 @@ h1{
 }
 
 .subtit{
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Karla', sans-serif;
     text-align: left;
 }
 
@@ -350,14 +351,14 @@ h1{
     height:450px;
 }
 
-.navbar, h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, p, .navbar, .brand, a, .td-name, td, button, input, select, textarea{
+.navbar, h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, .navbar, .brand, a, .td-name, td, button, input, select, textarea{
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     font-family: "Montserrat", "Helvetica", Arial, sans-serif;
     font-weight: 300;
 }
 .main-tit{
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Karla', sans-serif;
 }
 
 .navbar-toggle {
@@ -595,7 +596,7 @@ body {
 .plate-name{
     font-size: 20px;
     font-weight: 300;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Karla', sans-serif;
     text-transform: capitalize;
     text-align: left;
 }
@@ -629,7 +630,7 @@ body {
     z-index: 9999 !important;
 }
 .order-tit{
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Karla', sans-serif;
     font-size: 20px;
     font-weight:bolder;
 }
@@ -645,4 +646,14 @@ body {
 .cardOrder{
     height: auto;
     width: 100%;
+}
+
+.ordCardRes{
+    height: auto;
+    width: 70%;
+}
+.ordRes{
+    font-family: 'Karla', sans-serif;
+    font-size: 20px;
+    font-weight: bold;  
 }

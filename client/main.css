@@ -581,3 +581,63 @@ body {
 .padDow{
     padding-bottom: 15px;
 }
+
+#chatContainer{
+    padding: 15px;
+    width: 50%;
+    height: 500px;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+}
+
+.msjContainer {
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    width: 150px;
+    float: left;
+}
+
+.darker {
+    border-color: #ccc;
+    background-color: #ddd;
+    float: right;
+}
+
+.msjContainer::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.time-right {
+    float: right;
+    color: #aaa;
+}
+
+.time-left {
+    float: left;
+    color: #999;
+}
+
+.msgInput{
+    width: 50%;
+    background-color: #E2E5E3;
+    padding: 10px;
+}
+
+#newMsg{
+    border-radius: 10px;
+    border: none;
+    width: 75%;
+    padding-left: 10px;
+}
+
+.sendButton{
+    border: none;
+    border-radius: 10px;
+    background: #08c65b;
+    margin-left: 5px;
+}

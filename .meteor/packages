@@ -23,3 +23,5 @@ alanning:roles
 meteorhacks:inject-initial
 edgee:slingshot
 meteortesting:mocha
+session
+http

@@ -4,12 +4,41 @@ import { Orders } from "../../../api/orders";
 import { OrderDetail } from "./OrderDetail";
 import { ClientAppNav } from "../navs/ClientAppNav";
 import {RestaurantAppNav} from "../navs/RestaurantAppNav";
+import {Chats} from "../../../api/chats";
+import Chat from "../chat/Chat";
+import { Session } from 'meteor/session';
 
 class OrdersList extends Component {
 
     constructor(props){
         super(props);
         this.logout = this.logout.bind(this);
+        this.createChat = this.createChat.bind(this);
+        this.state = {
+            chatId: ""
+        };
+    }
+
+    createChat(id){
+        Meteor.call("chats.insertChat", id, (err, res) =>{
+            if(err){
+                console.log(err);
+            }
+            else{
+                Meteor.call("chats.findChat", id, (err, res) => {
+                    if(err){
+                        console.log(err);
+                    }
+                    else{
+                        var chId = res[0]._id;
+                        Session.set("chatId", chId);
+                        this.setState({
+                            chatId: chId
+                        });
+                    }
+                });
+            }
+        });
     }
 
     logout() {
@@ -29,10 +58,17 @@ class OrdersList extends Component {
                     <div className="row">
                         <h3 className="detail">Your Orders:</h3>
                     </div>
-                    <div className="container">
-                        {this.props.orders.map((d, i) =>
-                            <OrderDetail plates={d.items} state={d.state} price={d.price} restName={d.restaurantName} key={i} />
-                        )}
+                    <div className="row">
+                        <div className="col-md-6">
+                            <div className="container">
+                                {this.props.orders.map((d, i) =>
+                                    <OrderDetail plates={d.items} state={d.state} price={d.price} restName={d.restaurantName} key={i} orderId={d._id} onClick={this.createChat} />
+                                )}
+                            </div>
+                        </div>
+                        <div className="col-md-6">
+                            {this.state.chatId !== "" ? <Chat chatId={this.state.chatId}/> : <div></div>}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -42,6 +78,7 @@ class OrdersList extends Component {
 }
 export default withTracker(() => {
     Meteor.subscribe("orders");
+    Meteor.subscribe("chats");
     let idOwner = sessionStorage.getItem("id");
     return {
         orders: Orders.find({ clientId: idOwner }, { sort: { createdAt: -1 } }).fetch()

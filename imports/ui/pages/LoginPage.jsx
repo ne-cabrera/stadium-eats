@@ -91,7 +91,7 @@ export default class LoginPage extends Component {
           </h1>
           </div>
 
-          <div className="card card-container">
+          <div className="card card-container card-fino">
             {this.alert()}
             <img id="profile-img" className="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
             <p id="profile-name" className="profile-name-card"></p>

@@ -29,7 +29,7 @@ export class OrderDetail extends Component {
     render() {
         return (
             <div className=" border-bottom detail">
-                <div className="card">
+                <div className="card cardOrder">
                     <div className="container">
                         <div className="row">
                             <div className="col-md-8">

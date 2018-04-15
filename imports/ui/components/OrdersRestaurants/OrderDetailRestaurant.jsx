@@ -1,7 +1,23 @@
 import React from "react";
 
 export class OrderDetailRestaurant extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      file: []
+    };
+  }
 
+  picture(e) {
+    e.preventDefault();
+    let files = e.target.files;
+    this.setState({
+      img: files
+    });
+    console.log(files);
+    console.log(this.state);
+
+  }
 
   onChange(e) {
     e.preventDefault();
@@ -16,9 +32,9 @@ export class OrderDetailRestaurant extends React.Component {
 
         <div className="" >
           <div className="row">
-            <div className="card">
+            <div className="card ordCardRes">
               <div className="card-tittle">
-                <h4>Order # {this.props.idOrder}</h4>
+                <h4 className="ordRes">Order # {this.props.idOrder}</h4>
               </div>
 
               <div className="padl" >
@@ -30,7 +46,7 @@ export class OrderDetailRestaurant extends React.Component {
                 <label htmlFor="">{this.props.date}</label>
               </div>
               <div>
-                <h4>
+                <h4 className="ordRes">
                   Location
               </h4>
               </div>
@@ -55,7 +71,7 @@ export class OrderDetailRestaurant extends React.Component {
               </div>
 
               <div>
-                <h4>
+                <h4 className="ordRes">
                   Plates
               </h4>
               </div>
@@ -68,7 +84,7 @@ export class OrderDetailRestaurant extends React.Component {
                 ))
               }
               <div>
-                <h6><b>Total: </b>${this.props.price}</h6>
+                <h6 className="ordRes"><b>Total: </b>${this.props.price}</h6>
               </div>
               <div>
                 <select className="custom-select wid" value={this.props.state} onChange={this.onChange.bind(this)}>

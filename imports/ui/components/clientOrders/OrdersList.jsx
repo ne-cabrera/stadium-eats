@@ -7,10 +7,11 @@ import {RestaurantAppNav} from "../navs/RestaurantAppNav";
 import {Chats} from "../../../api/chats";
 import Chat from "../chat/Chat";
 import { Session } from 'meteor/session';
+import { HeaderRestaurant } from "../HeaderRestaurant";
 
 class OrdersList extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.logout = this.logout.bind(this);
         this.createChat = this.createChat.bind(this);
@@ -53,7 +54,8 @@ class OrdersList extends Component {
         console.log(this.props.orders);
         return (
             <div>
-                <ClientAppNav onClick={this.logout}/>
+                <ClientAppNav onClick={this.logout} />
+                <HeaderRestaurant />
                 <div className="container">
                     <div className="row">
                         <h3 className="detail">Your Orders:</h3>

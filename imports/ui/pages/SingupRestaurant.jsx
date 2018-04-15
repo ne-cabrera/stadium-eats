@@ -3,6 +3,7 @@ import { withHistory, Link } from "react-router-dom";
 import { Accounts } from "meteor/accounts-base";
 import { Meteor } from "meteor/meteor";
 import { Restaurantes } from "../../api/restaurantes";
+import { HomeNav } from "../components/navs/HomeNav";
 
 export default class SingupRestaurant extends React.Component {
 
@@ -104,13 +105,19 @@ export default class SingupRestaurant extends React.Component {
   render() {
     return (
       <div>
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <nav className="navbar navbar-expand-lg fixed-top nav-down" >
           <div className="container">
-            <a className="navbar-brand" href="#">Stadium Eats</a>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarResponsive">
+            <div className="navbar-translate">
+              <div className="navbar-header">
+                <a href="" className="navbar-brand">Stadium Eats</a>
+              </div>
+              <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-bar"></span>
+                <span class="navbar-toggler-bar"></span>
+                <span class="navbar-toggler-bar"></span>
+              </button>
+            </div>
+            <div className="collapse navbar-collapse">
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
                   <a className="nav-link" href="#" onClick={this.backHome.bind(this)}>Home</a>
@@ -125,7 +132,7 @@ export default class SingupRestaurant extends React.Component {
               Register
                         </h1>
           </div>
-          <div className="card card-container">
+          <div className="card card-container card-fino">
             <img id="profile-img" className="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
             <p id="profile-name" className="profile-name-card"></p>
             <form id="login-form" className="form col-md-12 center-block" onSubmit={this.handleSubmit}>

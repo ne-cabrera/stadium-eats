@@ -12,7 +12,8 @@ body {
   }
   
   .card {
-    height: 100%;
+    height: 85%;
+    width: 18rem;
   }
   .pagination {
     margin-bottom: 15px;
@@ -23,8 +24,9 @@ nav {
     margin: auto 100;
     padding-bottom: 3.5rem;
 }
-p{
-    font-family: 'Cardo', serif;
+label, p{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
 }
 
 h1{
@@ -121,6 +123,15 @@ h1{
     box-sizing: border-box;
 }
 
+input.file {
+	position: relative;
+	text-align: right;
+	-moz-opacity:0 ;
+	filter:alpha(opacity: 0);
+	opacity: 0;
+	z-index: 2;
+}
+
 .form-signin .form-control:focus {
     border-color: rgb(104, 145, 162);
     outline: 0;
@@ -169,7 +180,7 @@ h1{
 }
 
 .restName {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Karla', sans-serif;
     text-transform: capitalize;
     text-align: left;
     color: black;
@@ -179,13 +190,17 @@ h1{
 }
 
 .subtit{
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Karla', sans-serif;
     text-align: left;
 }
 
 .restContainer{
     margin-top: 20px;
     text-align: center;
+
+}
+.restContainer2{
+    padding-bottom: 10px;
 }
 
 .menuItem {
@@ -208,6 +223,11 @@ h1{
 
 .order{
     margin-bottom: 20px;
+    padding-left: 200px;
+    padding-top: 55px;
+   
+    position: sticky;
+    top: 0;
 }
 
 .orderContainer{
@@ -340,14 +360,14 @@ h1{
     height:450px;
 }
 
-.navbar, h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, p, .navbar, .brand, a, .td-name, td, button, input, select, textarea{
+.navbar, h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, .navbar, .brand, a, .td-name, td, button, input, select, textarea{
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     font-family: "Montserrat", "Helvetica", Arial, sans-serif;
     font-weight: 300;
 }
 .main-tit{
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Karla', sans-serif;
 }
 
 .navbar-toggle {
@@ -640,4 +660,73 @@ body {
     border-radius: 10px;
     background: #08c65b;
     margin-left: 5px;
+}
+
+.plate-name{
+    font-size: 20px;
+    font-weight: 300;
+    font-family: 'Karla', sans-serif;
+    text-transform: capitalize;
+    text-align: left;
+}
+.subtit{
+    font-size: 14px;
+}
+.sizeC{
+    height: auto;
+}
+
+.sideSticky{
+    width: 130px;
+    position: fixed;
+    z-index: 1;
+    top: 20px;
+    left: 10px;
+    background: #eee;
+    overflow-x: hidden;
+    padding: 8px 0;
+}
+
+
+.card-img-top{
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+.affix {
+    top: 0;
+    width: 100%;
+    z-index: 9999 !important;
+}
+.order-tit{
+    font-family: 'Karla', sans-serif;
+    font-size: 20px;
+    font-weight:bolder;
+}
+.cardS{
+    height: auto;
+    width: 200%;
+}
+.order-info{
+    padding-left: 50px;
+    padding-right: 300px;
+}
+
+.cardOrder{
+    height: auto;
+    width: 100%;
+}
+
+.ordCardRes{
+    height: auto;
+    width: 70%;
+}
+.ordRes{
+    font-family: 'Karla', sans-serif;
+    font-size: 20px;
+    font-weight: bold;  
+}
+.card-fino{
+    height: auto;
+    width: 70%;
 }

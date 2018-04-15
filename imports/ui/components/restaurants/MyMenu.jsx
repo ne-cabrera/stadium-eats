@@ -101,7 +101,7 @@ class MyMenu extends React.Component {
                       <input type="number" id="plate-price" className="form-control input-lg" placeholder="Price" />
                     </div>
                     <div className="form-group text-center">
-                      <input type="submit" id="add-button" className="btn btn-dark btn-lg btn-block" value="Add!" onClick={this.handleSubmit.bind(this)} />
+                      <input type="submit" id="add-button" className="btn btn-success btn-lg btn-block" value="Add!" onClick={this.handleSubmit.bind(this)} />
                     </div>
                   </form>
                 </div>

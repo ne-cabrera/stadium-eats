@@ -107,7 +107,7 @@ export default class SignupPage extends Component {
               Register
           </h1>
           </div>
-          <div className="card card-container">
+          <div className="card card-container card-fino">
             {this.state.error !== "" ? <div class="alert alert-danger" role="alert">
               {this.state.error}
             </div> : ""}

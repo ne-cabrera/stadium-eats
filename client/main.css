@@ -123,6 +123,15 @@ h1{
     box-sizing: border-box;
 }
 
+input.file {
+	position: relative;
+	text-align: right;
+	-moz-opacity:0 ;
+	filter:alpha(opacity: 0);
+	opacity: 0;
+	z-index: 2;
+}
+
 .form-signin .form-control:focus {
     border-color: rgb(104, 145, 162);
     outline: 0;
@@ -656,4 +665,8 @@ body {
     font-family: 'Karla', sans-serif;
     font-size: 20px;
     font-weight: bold;  
+}
+.card-fino{
+    height: auto;
+    width: 70%;
 }

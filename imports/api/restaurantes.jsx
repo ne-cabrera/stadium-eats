@@ -49,17 +49,6 @@ Meteor.methods({
             throw new Meteor.Error("not-authorized");
         }
         Restaurantes.update({ owner: this.userId }, { $set: { img: pic } });
-    },
-    "getStadium"(){
-        try{
-            var a = HTTP.call("GET", "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=4.720690200000001,-74.03587619999999&radius=1644500&type=stadium&key=AIzaSyA1hR7bNT1ZIhNGm1eHDGcXUPOB3bIMPo4");
-            var jRes = JSON.parse(a.content);
-            res = jRes.results[0].name;
-            return res;
-        }
-        catch(e){
-            
-        }
     }
 });
 

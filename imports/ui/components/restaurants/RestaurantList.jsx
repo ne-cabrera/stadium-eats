@@ -25,17 +25,6 @@ class RestaurantList extends Component {
         console.log(stad);
     }
 
-    prueba(){
-        Meteor.call("getStadium", (err, res) =>{
-            if(err){
-                console.log(err);
-            }
-            else{
-                console.log(res);
-            }
-        })
-    }
-
     getLocation(){
        /* var header = new Headers({
             "Access-Control-Allow-Origin":"*",
@@ -61,10 +50,6 @@ class RestaurantList extends Component {
                         console.log(stName);
                     });
             });*/
-    }
-
-    componentDidMount(){
-        this.prueba();
     }
 
     render() {

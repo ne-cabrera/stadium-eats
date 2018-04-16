@@ -2,15 +2,16 @@ import React, { Component } from "react";
 import { OrderProgress } from "./progress/OrderProgress";
 import { OrderProgressPreparing } from "./progress/OrderProgressPreparing";
 import { OrderProgressDelivering } from "./progress/OrderProgressDelivering";
+import { withHistory, Link } from "react-router-dom";
 
 export class OrderDetail extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick(){
+    handleClick() {
         console.log(this.props.owner);
         this.props.onClick(this.props.owner, this.props.orderId);
     }
@@ -34,11 +35,10 @@ export class OrderDetail extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-md-8">
-                                <h3>{this.props.restName}</h3>
+                                <h3><Link to={{ pathname: "/orderDetail", state: { orderId: this.props.orderId, restName: this.props.restName, plates: this.props.plates, price: this.props.price, state: this.props.state, owner: this.props.owner } }}>
+                                    {this.props.restName}</Link></h3>
                             </div>
-                            <div className="col-md-4">
-                                <button type="button" className="btn btn-primary" onClick={this.handleClick}>Chat</button>
-                            </div>
+
                         </div>
                         {
                             this.props.plates.map((d, i) => (

@@ -7,6 +7,8 @@ import { Restaurantes } from "../api/restaurantes.jsx";
 import { RestaurantAppNav } from "./components/navs/RestaurantAppNav";
 import { ClientAppNav } from "./components/navs/ClientAppNav";
 import { HeaderRestaurant } from "./components/HeaderRestaurant";
+import { Session } from "meteor/session";
+import { HeaderLocation } from "./components/Headers/HeaderLocation";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -36,6 +38,20 @@ class App extends Component {
   //     }
   // }
 
+  mountHeader() {
+    let location = Session.get("Estadio");
+    if(location === "" || location === undefined) {
+      return (
+        <div>
+          <HeaderLocation />
+        </div>
+      );
+    } else {
+      <div>
+        <HeaderRestaurant />
+      </div>
+    }
+  }
 
   logout() {
     Meteor.logout((err) => {
@@ -50,17 +66,19 @@ class App extends Component {
 
   render() {
     let currUsr = this.state.user;
+
     console.log(this.state.user);
     console.log(this.props.restaurants);
     return (
       <div>
-        <HeaderRestaurant />
+
         <div>
           {this.state.user.profile.role === "restaurant" ?
             (<RestaurantAppNav onClick={this.logout} />) :
             (<ClientAppNav onClick={this.logout} />)}
         </div>
         <div>
+
           {
             this.state.user.profile.role === "client" ?
               <MainPage

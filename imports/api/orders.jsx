@@ -15,8 +15,8 @@ Meteor.methods({
   "orders.insert"(prods, total, resName, username, locationT, resOwn) {
     if(!this.userId) {
       throw new Meteor.Error("not-authorized");
-    }
-    Orders.insert({
+    } 
+    var id =Orders.insert({
       items: prods,
       price: total,
       sector: locationT.sector,
@@ -30,6 +30,12 @@ Meteor.methods({
       state: "order received",
       createdAt: new Date()
     });
+    var order = Orders.findOne({_id: id});
+    var state = order.state;
+    return {
+      idOrder: id,
+      stateOrder: state
+    }
   },
   "orders.changeState"(idOrder, stateOr) {
     Orders.update({ _id: idOrder },

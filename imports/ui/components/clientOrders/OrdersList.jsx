@@ -3,11 +3,12 @@ import { withTracker } from "meteor/react-meteor-data";
 import { Orders } from "../../../api/orders";
 import { OrderDetail } from "./OrderDetail";
 import { ClientAppNav } from "../navs/ClientAppNav";
-import {RestaurantAppNav} from "../navs/RestaurantAppNav";
-import {Chats} from "../../../api/chats";
+import { RestaurantAppNav } from "../navs/RestaurantAppNav";
+import { Chats } from "../../../api/chats";
 import Chat from "../chat/Chat";
 import { Session } from "meteor/session";
 import { HeaderRestaurant } from "../HeaderRestaurant";
+import HeaderClient from "../Headers/HeaderClient";
 import { Pagination } from "../pagination/Pagination";
 
 class OrdersList extends Component {
@@ -25,42 +26,42 @@ class OrdersList extends Component {
         this.select = this.select.bind(this);
     }
 
-    previous(){
+    previous() {
         var curr = this.state.currentPage - 1;
-        if(curr >= 1){
+        if(curr >= 1) {
             this.setState({
                 currentPage: curr
             });
         }
     }
-    
-    next(){
+
+    next() {
         var curr = this.state.currentPage + 1;
         var max = Math.ceil(this.props.orders.length / 5);
-        if(curr <= max){
+        if(curr <= max) {
             this.setState({
                 currentPage: curr
             });
         }
     }
-    
-    select(num){
+
+    select(num) {
         this.setState({
             currentPage: num
         });
     }
 
-    createChat(id, ordId){
-        Meteor.call("chats.insertChat", id, ordId, (err, res) =>{
-            if(err){
+    createChat(id, ordId) {
+        Meteor.call("chats.insertChat", id, ordId, (err, res) => {
+            if(err) {
                 console.log(err);
             }
-            else{
+            else {
                 Meteor.call("chats.findChat", id, ordId, (err, res) => {
-                    if(err){
+                    if(err) {
                         console.log(err);
                     }
-                    else{
+                    else {
                         var chId = res[0]._id;
                         Session.set("chatId", chId);
                         this.setState({
@@ -80,11 +81,11 @@ class OrdersList extends Component {
         });
     }
 
-    renderOrdersDetail(){
+    renderOrdersDetail() {
         let i = (this.state.currentPage - 1) * 5;
         let j = this.state.currentPage * 5;
         var arr = [];
-        for(i; i< j && i<this.props.orders.length; i++){
+        for(i; i < j && i < this.props.orders.length; i++) {
             var d = this.props.orders[i];
             arr.push(<OrderDetail plates={d.items} state={d.state} price={d.price} restName={d.restaurantName} owner={d.restaurantOwner} key={i} orderId={d._id} onClick={this.createChat} />);
         }
@@ -96,7 +97,7 @@ class OrdersList extends Component {
         return (
             <div>
                 <ClientAppNav onClick={this.logout} />
-                <HeaderRestaurant />
+                <HeaderClient />
                 <div className="container">
                     <div className="row">
                         <h3 className="detail">Your Orders:</h3>
@@ -104,19 +105,16 @@ class OrdersList extends Component {
                     <div className="row">
                         <div className="col-md-6">
                             <div className="container">
-                                {this.renderOrdersDetail().map((d) => d )}
+                                {this.renderOrdersDetail().map((d) => d)}
                             </div>
                             <div>
-                                <Pagination items={Math.ceil(this.props.orders.length / 5)} previous={this.previous} next={this.next} select={this.select}/>
+                                <Pagination items={Math.ceil(this.props.orders.length / 5)} previous={this.previous} next={this.next} select={this.select} />
                             </div>
                         </div>
-                        <div className="col-md-6">
-                            {this.state.chatId !== "" ? <Chat chatId={this.state.chatId}/> : <div></div>}
-                        </div>
+
                     </div>
                 </div>
             </div>
-
         );
     }
 }

@@ -1,46 +1,52 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { withTracker } from "meteor/react-meteor-data";
-import {ChatMsgs} from "../../../api/chatMsgs";
-import {Meteor} from "meteor/meteor";
-import {Msj} from "./Msj";
-import {MsjInput} from "./MsjInput";
+import { ChatMsgs } from "../../../api/chatMsgs";
+import { Meteor } from "meteor/meteor";
+import { Msj } from "./Msj";
+import { MsjInput } from "./MsjInput";
 import { Session } from "meteor/session";
 
-class Chat extends Component{
+class Chat extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.sendMessage = this.sendMessage.bind(this);
     }
 
-    sendMessage(msj){
+    sendMessage(msj) {
         var sender = Meteor.userId();
-        Meteor.call("chatMsgs.insert", sender, msj, this.props.chatId);
-        console.log("aaaaaa");
+        if(msj !== "" || msj !== " ") {
+
+            Meteor.call("chatMsgs.insert", sender, msj, this.props.chatId);
+            console.log("aaaaaa");
+        }
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <div className="container">
+
                 <div className="row">
+
                     <div id="chatContainer">
-                        {this.props.messages.map( (d, i) =>
-                            <Msj msg={d} key={i}/>)}
+
+                        {this.props.messages.map((d, i) =>
+                            <Msj msg={d} key={i} />)}
                     </div>
                 </div>
                 <div className="row">
-                    <MsjInput onSubmit={this.sendMessage}/>
+                    <MsjInput onSubmit={this.sendMessage} />
                 </div>
             </div>
-            
+
         );
     }
 }
 
-export default withTracker(() =>{
+export default withTracker(() => {
     Meteor.subscribe("chatMsgs");
     var chId = Session.get("chatId");
     return {
-        messages: ChatMsgs.find({ chatId: chId}).fetch()
+        messages: ChatMsgs.find({ chatId: chId }).fetch()
     };
 })(Chat);

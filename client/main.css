@@ -360,14 +360,20 @@ input.file {
     height:450px;
 }
 
-.navbar, h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, .navbar, .brand, a, .td-name, td, button, input, select, textarea{
+.navbar, h1,  h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, .navbar, .brand, a, .td-name, td, button, input, select, textarea{
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    font-family: "Montserrat", "Helvetica", Arial, sans-serif;
+  
     font-weight: 300;
 }
 .main-tit{
     font-family: 'Karla', sans-serif;
+    font-size: 23px;
+    padding-left: 10px;
+    float: left;
+}
+.contResti{
+    padding-top: 0%;
 }
 
 .navbar-toggle {
@@ -388,7 +394,7 @@ input.file {
     transition: all 0.4s;
     -webkit-transition: all 0.4s;
     padding: 0;
-    background: #eb203f;
+    background: #f4364c;
     box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);
     height: 57px;
 
@@ -447,14 +453,16 @@ input.file {
 .main-tittle{
     font-size: 3rem;
     line-height: 1.13;
+    font-family: 'Karla', sans-serif;
     margin: 0;
-    margin-bottom: 0.9rem;
+    margin-bottom: 0.9rem; 
     color: #fff;
     
 }
 .second-tittle{
     font-size: 1.3rem;
     margin: 0;
+    font-family: 'Karla', sans-serif;
     margin-bottom: 2.2rem;
     font-weight: 600;
     color:#fff;
@@ -606,9 +614,10 @@ body {
     margin-top: 75px;
     padding: 15px;
     width: 50%;
-    height: 500px;
+    height: 400px;
     overflow-y: scroll;
     border: 1px solid #ccc;
+    padding-left: 100px;
 }
 
 .msjContainer {
@@ -619,6 +628,13 @@ body {
     margin: 10px 0;
     width: 150px;
     float: left;
+}
+
+.msjContainer2 {
+    background-color: #f1f1f1;
+    margin: 10px 0;
+    width: 150px;
+    padding-top: 0%;
 }
 
 .darker {
@@ -739,4 +755,24 @@ body {
 .chatsList{
     list-style-type: none;
     overflow-y: scroll;
+}
+.header-chat{
+    background-color:  #f4364c;
+    background-position: center center;
+    background-size: cover;
+    min-height: 5vh;
+    max-height: 15px;
+    overflow: hidden;
+    position: relative;
+    padding-top: -5%;
+    padding-left: 0%;   
+    width: 200%;
+    height: 100px;
+    z-index: 1;
+}
+
+.padchat{
+    padding-top: 50px;
+    padding-left: 100px;
+
 }

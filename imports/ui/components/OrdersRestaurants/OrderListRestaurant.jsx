@@ -2,12 +2,43 @@ import React from "react";
 import { Orders } from "../../../api/orders";
 import { withTracker } from "meteor/react-meteor-data";
 import { OrderDetailRestaurant } from "../../components/OrdersRestaurants/OrderDetailRestaurant";
+import {Pagination} from "../pagination/Pagination";
+import {Session} from "meteor/session";
 class OrderListRestaurant extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      orderState: ""
+      orderState: "",
+      currentPage: 1
     }
+    this.previous = this.previous.bind(this);
+    this.next = this.next.bind(this);
+    this.select = this.select.bind(this);
+  }
+
+  previous(){
+    var curr = this.state.currentPage - 1;
+    if(curr >= 1){
+      this.setState({
+        currentPage: curr
+      })
+    }
+  }
+
+  next(){
+    var curr = this.state.currentPage + 1;
+    var max = Math.ceil(this.props.orders.length / 4);
+    if(curr <= max){
+      this.setState({
+        currentPage: curr
+      })
+    }
+  }
+
+  select(num){
+    this.setState({
+      currentPage: num
+    })
   }
 
   onChange(idOr, stateO) {
@@ -16,112 +47,39 @@ class OrderListRestaurant extends React.Component {
   }
 
   changeOrderState(e) {
+    console.log("aaaaa");
     e.preventDefault();
-    oState = e.target.value;
+    var oState = e.target.value;
     this.setState({
       orderState: oState
     });
-    sessionStorage.setItem("oState", oState);
+    console.log(oState);
+    Session.set("oState", oState);
   }
 
-  renderOrder() {
-    if(this.state.orderState === "") {
-      return (
-        <div className="container">
-          <div className="row">
-            {this.props.orders.map((d, i) =>
-
-              <OrderDetailRestaurant
-                plates={d.items}
-                state={d.state}
-                price={d.price}
-                date={d.createdAt.toString()}
-                restName={d.restaurantName}
-                idOrder={d._id}
-                username={d.userName}
-                sector={d.sector}
-                stand={d.stand}
-                row={d.row}
-                sitnum={d.sitnum}
-                key={i}
-                onChange={this.onChange.bind(this)} />
-            )}
-          </div>
-        </div>
-      );
-    } else if(this.state.orderState === "order received") {
-      return (
-        <div className="container">
-          <div className="row">
-            {this.props.ordersReceived.map((d, i) =>
-              <OrderDetailRestaurant
-                plates={d.items}
-                state={d.state}
-                price={d.price}
-                date={d.createdAt.toString()}
-                restName={d.restaurantName}
-                idOrder={d._id}
-                username={d.userName}
-                sector={d.sector}
-                stand={d.stand}
-                row={d.row}
-                sitnum={d.sitnum}
-                key={i}
-                onChange={this.onChange.bind(this)} />
-            )}
-          </div>
-        </div>
-      );
-    } else if(this.state.orderState === "delivering") {
-      return (
-        <div className="container">
-          <div className="row">
-            {this.props.ordersDelive.map((d, i) =>
-              <OrderDetailRestaurant
-                plates={d.items}
-                state={d.state}
-                price={d.price}
-                date={d.createdAt.toString()}
-                restName={d.restaurantName}
-                idOrder={d._id}
-                username={d.userName}
-                sector={d.sector}
-                stand={d.stand}
-                row={d.row}
-                sitnum={d.sitnum}
-                key={i}
-                onChange={this.onChange.bind(this)} />
-            )}
-          </div>
-        </div>
-      );
-    } else if(this.state.orderState === "preparing") {
-      return (
-        <div className="container">
-          <div className="row">
-            {this.props.ordersPrep.map((d, i) =>
-              <OrderDetailRestaurant
-                plates={d.items}
-                state={d.state}
-                price={d.price}
-                date={d.createdAt.toString()}
-                restName={d.restaurantName}
-                idOrder={d._id}
-                username={d.userName}
-                sector={d.sector}
-                stand={d.stand}
-                row={d.row}
-                sitnum={d.sitnum}
-                key={i}
-                onChange={this.onChange.bind(this)} />
-            )}
-          </div>
-        </div>
-
-      );
+  renderOrdersPag(){
+    let i = (this.state.currentPage - 1) * 4;
+    let j = this.state.currentPage * 4;
+    var arr = [];
+    for(i; i< j && i<this.props.orders.length; i++){
+      var d = this.props.orders[i];
+      arr.push(<OrderDetailRestaurant
+        plates={d.items}
+        state={d.state}
+        price={d.price}
+        date={d.createdAt.toString()}
+        restName={d.restaurantName}
+        idOrder={d._id}
+        username={d.userName}
+        sector={d.sector}
+        stand={d.stand}
+        row={d.row}
+        sitnum={d.sitnum}
+        key={i}
+        onChange={this.onChange.bind(this)} />)
     }
+    return arr;
   }
-
 
   render() {
     return (
@@ -142,10 +100,17 @@ class OrderListRestaurant extends React.Component {
           <hr />
         </div>
         <div>
-          {this.renderOrder()}
+        <div className="container">
+          <div className="row">
+            {this.renderOrdersPag().map((d) =>
+            d
+            )}
+          </div>
         </div>
-
-
+        </div>
+        <div>
+          <Pagination items={Math.ceil(this.props.orders.length / 4)} previous={this.previous} next={this.next} select={this.select}/>
+        </div>
       </div>
     );
   }
@@ -153,12 +118,12 @@ class OrderListRestaurant extends React.Component {
 export default withTracker(() => {
   Meteor.subscribe("orders");
   let owner = sessionStorage.getItem("username");
-  let s = sessionStorage.getItem("oState");
-  console.log(s, "soy s");
-  return {
-    orders: Orders.find({ restaurantName: owner }, { sort: { createdAt: -1 } }).fetch(),
-    ordersPrep: Orders.find({ restaurantName: owner, state: "preparing" }, { sort: { createdAt: -1 } }).fetch(),
-    ordersDelive: Orders.find({ restaurantName: owner, state: "delivering" }, { sort: { createdAt: -1 } }).fetch(),
-    ordersReceived: Orders.find({ restaurantName: owner, state: "order received" }, { sort: { createdAt: -1 } }).fetch()
-  };
+  let filt = Session.get("oState");
+  console.log(filt);
+    if( filt === "" || filt === undefined){
+      return {orders: Orders.find({ restaurantName: owner }, { sort: { createdAt: -1 } }).fetch()}
+    }
+    else{
+      return {orders: Orders.find({ restaurantName: owner, state: filt }, { sort: { createdAt: -1 } }).fetch()}
+    }
 })(OrderListRestaurant);

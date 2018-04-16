@@ -11,7 +11,7 @@ if(Meteor.isServer) {
 }
 
 Meteor.methods({
-    "chatMsgs.insert"(senderId, text, chat){
+    "chatMsgs.insert"(senderId, text, chat) {
         if(!this.userId) {
             throw new Meteor.Error("not-authorized");
         }
@@ -20,7 +20,7 @@ Meteor.methods({
         var minutes = date.getMinutes();
         t = {
             hour: hours,
-            minute: minutes 
+            minute: minutes
         };
         ChatMsgs.insert({
             sender: senderId,

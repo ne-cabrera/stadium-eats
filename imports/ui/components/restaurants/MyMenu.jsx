@@ -4,7 +4,7 @@ import { Restaurantes } from "../../../api/restaurantes";
 import { withTracker } from "meteor/react-meteor-data";
 import { RestaurantAppNav } from "../navs/RestaurantAppNav";
 import { HeaderRestaurant } from "../HeaderRestaurant";
-
+import { HeaderClient } from "../Headers/HeaderClient";
 class MyMenu extends React.Component {
 
   constructor(props) {

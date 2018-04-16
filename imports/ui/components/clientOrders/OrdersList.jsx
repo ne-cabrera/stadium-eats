@@ -8,6 +8,7 @@ import { Chats } from "../../../api/chats";
 import Chat from "../chat/Chat";
 import { Session } from 'meteor/session';
 import { HeaderRestaurant } from "../HeaderRestaurant";
+import HeaderClient from "../Headers/HeaderClient";
 
 class OrdersList extends Component {
 
@@ -55,7 +56,7 @@ class OrdersList extends Component {
         return (
             <div>
                 <ClientAppNav onClick={this.logout} />
-                <HeaderRestaurant />
+                <HeaderClient />
                 <div className="container">
                     <div className="row">
                         <h3 className="detail">Your Orders:</h3>

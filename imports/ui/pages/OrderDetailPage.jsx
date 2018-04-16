@@ -6,6 +6,8 @@ import { HeaderRestaurant } from "../components/HeaderRestaurant";
 import { OrderProgress } from "../components/clientOrders/progress/OrderProgress";
 import { OrderProgressPreparing } from "../components/clientOrders/progress/OrderProgressPreparing";
 import { OrderProgressDelivering } from "../components/clientOrders/progress/OrderProgressDelivering";
+import HeaderClient from "../components/Headers/HeaderClient";
+
 export default class OrderDetailPage extends React.Component {
 
   constructor(props) {
@@ -62,7 +64,7 @@ export default class OrderDetailPage extends React.Component {
     return (
       <div>
         <ClientAppNav onClick={this.logout} />
-        <HeaderRestaurant />
+        <HeaderClient />
 
         <div className=" row container">
           <div className=" col-md-6">
@@ -93,8 +95,12 @@ export default class OrderDetailPage extends React.Component {
               </div>
             </div>
           </div>
-          <div className="col-md-6 padUp" data-spy="affix">
-            {this.state.chatId !== "" ? <Chat chatId={this.state.chatId} /> : <div></div>}
+
+          <div className="col-md-6 padchat" data-spy="affix">
+            <div className="container">
+              {this.state.chatId !== "" ? <Chat chatId={this.state.chatId} /> : <div></div>}
+            </div>
+
           </div>
         </div>
       </div>

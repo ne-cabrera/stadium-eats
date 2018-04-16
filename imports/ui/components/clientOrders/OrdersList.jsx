@@ -6,8 +6,9 @@ import { ClientAppNav } from "../navs/ClientAppNav";
 import {RestaurantAppNav} from "../navs/RestaurantAppNav";
 import {Chats} from "../../../api/chats";
 import Chat from "../chat/Chat";
-import { Session } from 'meteor/session';
+import { Session } from "meteor/session";
 import { HeaderRestaurant } from "../HeaderRestaurant";
+import { Pagination } from "../pagination/Pagination";
 
 class OrdersList extends Component {
 
@@ -16,8 +17,37 @@ class OrdersList extends Component {
         this.logout = this.logout.bind(this);
         this.createChat = this.createChat.bind(this);
         this.state = {
-            chatId: ""
+            chatId: "",
+            currentPage: 1
         };
+        this.previous = this.previous.bind(this);
+        this.next = this.next.bind(this);
+        this.select = this.select.bind(this);
+    }
+
+    previous(){
+        var curr = this.state.currentPage - 1;
+        if(curr >= 1){
+            this.setState({
+                currentPage: curr
+            });
+        }
+    }
+    
+    next(){
+        var curr = this.state.currentPage + 1;
+        var max = Math.ceil(this.props.orders.length / 5);
+        if(curr <= max){
+            this.setState({
+                currentPage: curr
+            });
+        }
+    }
+    
+    select(num){
+        this.setState({
+            currentPage: num
+        });
     }
 
     createChat(id){
@@ -50,6 +80,17 @@ class OrdersList extends Component {
         });
     }
 
+    renderOrdersDetail(){
+        let i = (this.state.currentPage - 1) * 5;
+        let j = this.state.currentPage * 5;
+        var arr = [];
+        for(i; i< j && i<this.props.orders.length; i++){
+            var d = this.props.orders[i];
+            arr.push(<OrderDetail plates={d.items} state={d.state} price={d.price} restName={d.restaurantName} key={i} orderId={d._id} onClick={this.createChat} />);
+        }
+        return arr;
+    }
+
     render() {
         console.log(this.props.orders);
         return (
@@ -63,9 +104,10 @@ class OrdersList extends Component {
                     <div className="row">
                         <div className="col-md-6">
                             <div className="container">
-                                {this.props.orders.map((d, i) =>
-                                    <OrderDetail plates={d.items} state={d.state} price={d.price} restName={d.restaurantName} key={i} orderId={d._id} onClick={this.createChat} />
-                                )}
+                                {this.renderOrdersDetail().map((d) => d )}
+                            </div>
+                            <div>
+                                <Pagination items={Math.ceil(this.props.orders.length / 5)} previous={this.previous} next={this.next} select={this.select}/>
                             </div>
                         </div>
                         <div className="col-md-6">

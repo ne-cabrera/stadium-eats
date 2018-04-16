@@ -120,7 +120,7 @@ export class RestaurantDetail extends Component {
         return (
             <div>
                 <ClientAppNav onClick={this.logout} />
-      
+
                 <HeaderRestaurant />
                 <div className="row restContainer">
                     <div className="col-md-7 restContainer">
@@ -154,11 +154,11 @@ export class RestaurantDetail extends Component {
                                                             {
                                                                 pathname: "/confirmOrderPage",
                                                                 state:
-                                        {
-                                            selectedItems: this.state.selectedItems,
-                                            total: this.calcularTotal(),
-                                            resName: this.props.location.state.name
-                                        }
+                                                                    {
+                                                                        selectedItems: this.state.selectedItems,
+                                                                        total: this.calcularTotal(),
+                                                                        resName: this.props.location.state.name
+                                                                    }
                                                             }}>
                                                             <ConfirmOrder total={this.calcularTotal()} /> </Link>)}
                                                 </div>
@@ -176,7 +176,7 @@ export class RestaurantDetail extends Component {
                     </div>
                 </div>
             </div>
-      
+
         );
     }
 }

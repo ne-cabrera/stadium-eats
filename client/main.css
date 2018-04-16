@@ -388,7 +388,7 @@ input.file {
     transition: all 0.4s;
     -webkit-transition: all 0.4s;
     padding: 0;
-    background: #eb203f;
+    background: #f4364c;
     box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);
     height: 57px;
 
@@ -620,6 +620,13 @@ body {
     float: left;
 }
 
+.msjContainer2 {
+    background-color: #f1f1f1;
+    margin: 10px 0;
+    width: 150px;
+    padding-top: 0%;
+}
+
 .darker {
     border-color: #ccc;
     background-color: #ddd;
@@ -729,4 +736,18 @@ body {
 .card-fino{
     height: auto;
     width: 70%;
+}
+.header-chat{
+    background-color:  #f4364c;
+    background-position: center center;
+    background-size: cover;
+    min-height: 5vh;
+    max-height: 15px;
+    overflow: hidden;
+    position: relative;
+    padding-top: -5%;
+    padding-left: 0%;   
+    width: 200%;
+    height: 100px;
+    z-index: 1;
 }

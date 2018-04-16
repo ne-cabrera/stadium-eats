@@ -3,8 +3,8 @@ import { withTracker } from "meteor/react-meteor-data";
 import { Orders } from "../../../api/orders";
 import { OrderDetail } from "./OrderDetail";
 import { ClientAppNav } from "../navs/ClientAppNav";
-import {RestaurantAppNav} from "../navs/RestaurantAppNav";
-import {Chats} from "../../../api/chats";
+import { RestaurantAppNav } from "../navs/RestaurantAppNav";
+import { Chats } from "../../../api/chats";
 import Chat from "../chat/Chat";
 import { Session } from 'meteor/session';
 import { HeaderRestaurant } from "../HeaderRestaurant";
@@ -20,17 +20,17 @@ class OrdersList extends Component {
         };
     }
 
-    createChat(id){
-        Meteor.call("chats.insertChat", id, (err, res) =>{
-            if(err){
+    createChat(id) {
+        Meteor.call("chats.insertChat", id, (err, res) => {
+            if(err) {
                 console.log(err);
             }
-            else{
+            else {
                 Meteor.call("chats.findChat", id, (err, res) => {
-                    if(err){
+                    if(err) {
                         console.log(err);
                     }
-                    else{
+                    else {
                         var chId = res[0]._id;
                         Session.set("chatId", chId);
                         this.setState({
@@ -68,13 +68,10 @@ class OrdersList extends Component {
                                 )}
                             </div>
                         </div>
-                        <div className="col-md-6">
-                            {this.state.chatId !== "" ? <Chat chatId={this.state.chatId}/> : <div></div>}
-                        </div>
+
                     </div>
                 </div>
             </div>
-
         );
     }
 }

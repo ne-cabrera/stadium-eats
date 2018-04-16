@@ -33,6 +33,7 @@ export default class ConfirmOrderPage extends React.Component {
     var prods = this.props.location.state.selectedItems;
     var total = this.props.location.state.total;
     let userName = Meteor.user().username;
+    var restaurantOwner = this.props.location.state.resOwn;
     var resName = this.props.location.state.resName;
     let rowT = document.getElementById("rowT").value;
     let sitnum = document.getElementById("sitnum").value
@@ -48,7 +49,7 @@ export default class ConfirmOrderPage extends React.Component {
         err: "Please give us your full location"
       });
     } else {
-      Meteor.call("orders.insert", prods, total, resName, userName, locationT);
+      Meteor.call("orders.insert", prods, total, resName, userName, locationT, restaurantOwner);
       alert("Order sent successfully");
     }
     rowT = document.getElementById("rowT").value = "";

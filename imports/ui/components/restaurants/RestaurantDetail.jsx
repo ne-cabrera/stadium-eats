@@ -93,6 +93,7 @@ export class RestaurantDetail extends Component {
         var total = this.calcularTotal();
         let userName = Meteor.user().username;
         var resName = this.props.location.state.name;
+        var resOwn = this.props.location.state.owner;
         let rowT = document.getElementById("rowT").value;
         let sitnum = document.getElementById("sitnum").value;
         let locationT = {
@@ -107,7 +108,9 @@ export class RestaurantDetail extends Component {
                 err: "Please give us your full location"
             });
         } else {
-            Meteor.call("orders.insert", prods, total, resName, userName, locationT);
+            console.log("aaaaaaaaaaaaaaaaaaaaa");
+            console.log(resOwn);
+            Meteor.call("orders.insert", prods, total, resName, userName, locationT, resOwn);
             alert("Order sent successfully");
         }
         rowT = document.getElementById("rowT").value = "";
@@ -116,7 +119,7 @@ export class RestaurantDetail extends Component {
     }
 
     render() {
-        console.log(this.props);
+        console.log(this.props.location);
         return (
             <div>
                 <ClientAppNav onClick={this.logout} />
@@ -157,7 +160,8 @@ export class RestaurantDetail extends Component {
                                         {
                                             selectedItems: this.state.selectedItems,
                                             total: this.calcularTotal(),
-                                            resName: this.props.location.state.name
+                                            resName: this.props.location.state.name,
+                                            resOwn: this.props.location.state.owner
                                         }
                                                             }}>
                                                             <ConfirmOrder total={this.calcularTotal()} /> </Link>)}

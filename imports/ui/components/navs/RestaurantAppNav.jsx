@@ -36,6 +36,9 @@ export class RestaurantAppNav extends Component {
                   <Link className="nav-link" to="/myMenu"> Menu</Link>
                 </li>
                 <li className="nav-item">
+                  <Link className="nav-link" to="/chats"> Chats</Link>
+                </li>
+                <li className="nav-item">
                   <Link className="nav-link" to="/login" onClick={this.handleClick}>Logout</Link>
                 </li>
               </ul>

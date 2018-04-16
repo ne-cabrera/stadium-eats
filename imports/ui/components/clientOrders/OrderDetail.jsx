@@ -11,7 +11,8 @@ export class OrderDetail extends Component {
     }
 
     handleClick(){
-        this.props.onClick(this.props.orderId);
+        console.log(this.props.owner);
+        this.props.onClick(this.props.owner, this.props.orderId);
     }
 
     selectProgress() {

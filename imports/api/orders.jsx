@@ -12,7 +12,7 @@ if(Meteor.isServer) {
 }
 
 Meteor.methods({
-  "orders.insert"(prods, total, resName, username, locationT) {
+  "orders.insert"(prods, total, resName, username, locationT, resOwn) {
     if(!this.userId) {
       throw new Meteor.Error("not-authorized");
     }
@@ -24,6 +24,7 @@ Meteor.methods({
       row: locationT.row,
       sitnum: locationT.sitnum,
       clientId: this.userId,
+      restaurantOwner: resOwn,
       userName: username,
       restaurantName: resName,
       state: "order received",

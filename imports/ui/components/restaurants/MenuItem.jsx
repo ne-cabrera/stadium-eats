@@ -28,9 +28,15 @@ export class MenuItem extends Component {
             <div>
               <p className="price">{this.props.price}COP</p>
             </div>
-            <div className="pad">
-              <button className="btn btn-success pad" onClick={this.handleClick}>Add!</button>
-            </div>
+            {Meteor.user() !== null ? (
+              <div>
+                <div className="pad">
+                  <button className="btn btn-success pad" onClick={this.handleClick}>Add!</button>
+                </div>
+              </div>
+
+            ) : ""}
+
           </div>
         </div>
       </div>

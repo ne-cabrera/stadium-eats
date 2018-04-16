@@ -7,6 +7,7 @@ import { Meteor } from "meteor/meteor";
 import { Link } from "react-router-dom";
 import { ClientAppNav } from "../navs/ClientAppNav";
 import { HeaderRestaurant } from "../HeaderRestaurant";
+import { NavNotLogin } from "../navs/NavNotLogin";
 
 export class RestaurantDetail extends Component {
     constructor(props) {
@@ -120,9 +121,11 @@ export class RestaurantDetail extends Component {
 
     render() {
         console.log(this.props.location);
+
         return (
             <div>
-                <ClientAppNav onClick={this.logout} />
+                {Meteor.user() !== null ? <ClientAppNav onClick={this.logout} /> : <NavNotLogin />}
+
 
                 <HeaderRestaurant />
                 <div className="row restContainer">

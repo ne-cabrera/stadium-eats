@@ -11,24 +11,32 @@ if(Meteor.isServer) {
 }
 
 Meteor.methods({
-    "chats.insertChat"(deliveryMan){
+    "chats.insertChat"(owner, order){
         if(!this.userId) {
             throw new Meteor.Error("not-authorized");
         }
-        var ch = Chats.find({$and: [{user: this.userId}, {delivery: deliveryMan}]}).fetch();
+        var ch = Chats.find({$and: [{user: this.userId}, {resOwner: owner}, {orderId: order}]}).fetch();
         if( ch.length === 0)
         {
             Chats.insert({
                 user: this.userId,
-                delivery: deliveryMan
+                resOwner: owner,
+                orderId: order
             });
         }
     },
-    "chats.findChat"(del){
+    "chats.findChat"(owner, order){
         if(!this.userId) {
             throw new Meteor.Error("not-authorized");
         }
-        var ch = Chats.find({$and: [{user: this.userId}, {delivery: del}]}).fetch();
+        var ch = Chats.find({$and: [{user: this.userId}, {resOwner: owner}, {orderId: order}]}).fetch();
+        return ch;
+    },
+    "chats.findChatRes"(user, order){
+        if(!this.userId) {
+            throw new Meteor.Error("not-authorized");
+        }
+        var ch = Chats.find({$and: [{user: user}, {resOwner: this.userId}, {orderId: order}]}).fetch();
         return ch;
     }
 });

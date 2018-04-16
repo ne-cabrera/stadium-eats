@@ -51,13 +51,13 @@ class OrdersList extends Component {
         });
     }
 
-    createChat(id) {
-        Meteor.call("chats.insertChat", id, (err, res) => {
+    createChat(id, ordId) {
+        Meteor.call("chats.insertChat", id, ordId, (err, res) => {
             if(err) {
                 console.log(err);
             }
             else {
-                Meteor.call("chats.findChat", id, (err, res) => {
+                Meteor.call("chats.findChat", id, ordId, (err, res) => {
                     if(err) {
                         console.log(err);
                     }
@@ -87,7 +87,7 @@ class OrdersList extends Component {
         var arr = [];
         for(i; i < j && i < this.props.orders.length; i++) {
             var d = this.props.orders[i];
-            arr.push(<OrderDetail plates={d.items} state={d.state} price={d.price} restName={d.restaurantName} key={i} orderId={d._id} onClick={this.createChat} />);
+            arr.push(<OrderDetail plates={d.items} state={d.state} price={d.price} restName={d.restaurantName} owner={d.restaurantOwner} key={i} orderId={d._id} onClick={this.createChat} />);
         }
         return arr;
     }

@@ -16,6 +16,7 @@ import RestaurantListPage from "./ui/pages/RestaurantListPage";
 import OrdersList from "./ui/components/clientOrders/OrdersList";
 import ConfirmOrderPage from "./ui/pages/ConfirmOrderPage";
 import OrderDetailPage from "./ui/pages/OrderDetailPage";
+import ChatDelivery from "./ui/components/chatDelivery/ChatDelivery";
 
 export const AppRoutes = () => (
     <Router>
@@ -30,6 +31,7 @@ export const AppRoutes = () => (
             <Route path="/myOrders" component={OrdersList} />
             <Route path="/confirmOrderPage" component={ConfirmOrderPage} />
             <Route path="/orderDetail" component={OrderDetailPage} />
+            <Route path="/chats" component={ChatDelivery} />
             <Route exact={true} path="/" component={HomePage} />
         </div>
     </Router>

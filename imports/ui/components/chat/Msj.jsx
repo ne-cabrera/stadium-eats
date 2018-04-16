@@ -12,7 +12,7 @@ export class Msj extends Component{
                     </div>
                 ): (
                     <div className="container msjContainer">
-                        <p>{this.props.msg.text}</p>
+                        <p>{this.props.msg.message}</p>
                     </div>
                 )}
             </div>

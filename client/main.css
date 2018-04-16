@@ -603,6 +603,7 @@ body {
 }
 
 #chatContainer{
+    margin-top: 75px;
     padding: 15px;
     width: 50%;
     height: 500px;
@@ -729,4 +730,13 @@ body {
 .card-fino{
     height: auto;
     width: 70%;
+}
+
+.chatElement{
+    padding: 15px;
+}
+
+.chatsList{
+    list-style-type: none;
+    overflow-y: scroll;
 }

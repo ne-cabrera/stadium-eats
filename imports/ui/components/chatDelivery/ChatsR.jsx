@@ -12,11 +12,11 @@ export class ChatsR extends Component{
     }
 
     render(){
+        console.log(Meteor.users.find({}).fetch());
         return(
-            <div >
+            <li onClick={this.handleClick}>
                 <p>{this.props.order}</p>
-                <button onClick={this.handleClick}>open</button>
-            </div>
+            </li>
         )
     }
 }

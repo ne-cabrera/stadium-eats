@@ -92,7 +92,7 @@ class OrdersList extends Component {
     }
 
     render() {
-        console.log(this.props.orders);
+        console.log(this.state.chatId);
         return (
             <div>
                 <ClientAppNav onClick={this.logout} />

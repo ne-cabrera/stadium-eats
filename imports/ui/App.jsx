@@ -25,7 +25,9 @@ class App extends Component {
       user: Meteor.user()
     };
   }
-
+  
+  //Quitar codigo comentado
+  
   // componentWillMount() {
   //     if(!this.state.isAuthenticated) {
   //         this.props.history.push("/Home");
@@ -57,6 +59,8 @@ class App extends Component {
     Meteor.logout((err) => {
       if(err) {
         console.log(err.reason);
+        //Si llega a haber un error, seria util mostrarlo de alguna 
+        //forma en el browser para mantener informado al usuario
       }
     });
   }
@@ -66,13 +70,17 @@ class App extends Component {
 
   render() {
     let currUsr = this.state.user;
-
+    
+    //Quitar impresiones en concola: Puede llegar a ser un riesgo darle a los usuarios las listas de restaurantes
     console.log(this.state.user);
     console.log(this.props.restaurants);
     return (
       <div>
 
         <div>
+          {
+            //Modificar el uso de roles: Colocar roles en el Profile es un riesgo de seguridad
+          }
           {this.state.user.profile.role === "restaurant" ?
             (<RestaurantAppNav onClick={this.logout} />) :
             (<ClientAppNav onClick={this.logout} />)}

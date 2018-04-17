@@ -12,8 +12,7 @@ export class PagIt extends Component{
     }
 
     render(){
-        return(
-            <li className="page-item" onClick={this.handleClick}><a class="page-link">{this.props.num}</a></li>
-        )
+        return this.props.current === 0 ? (<li className="page-item" onClick={this.handleClick}><a class="page-link">{this.props.num}</a></li>)
+            :(<li className="page-item active" onClick={this.handleClick}><a class="page-link">{this.props.num}</a></li>);
     }
 }

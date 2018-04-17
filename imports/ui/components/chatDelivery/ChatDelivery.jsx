@@ -46,7 +46,7 @@ class ChatDelivery extends Component{
             <div>
                 <RestaurantAppNav onClick={this.logout} />
                 <HeaderRestaurant />
-                <div className="container">
+                <div className="container chatResCont">
                     <div className="row">
                         <div className="col-md-6">
                             <ul className="chatsList">

@@ -14,8 +14,10 @@ export class ChatsR extends Component{
     render(){
         console.log(Meteor.users.find({}).fetch());
         return(
-            <li onClick={this.handleClick}>
-                <p>{this.props.order}</p>
+            <li className="liChatRes" onClick={this.handleClick}>
+                <div className="row chatElement">
+                    <p>{this.props.order}</p>
+                </div>
             </li>
         )
     }

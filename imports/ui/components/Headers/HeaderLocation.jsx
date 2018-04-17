@@ -3,7 +3,8 @@ import { Session } from "meteor/session";
 
 export class HeaderLocation extends React.Component {
 
-
+//Seria bueno quitar/achicar la barra de busqueda grande cuando se realiza la búsqueda. En pantallas pequeñas casi
+  //no se nota la actualización de datos segun el estadio 
   handleClick() {
     fetch("https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyA1hR7bNT1ZIhNGm1eHDGcXUPOB3bIMPo4", {
       method: "POST"
@@ -33,6 +34,7 @@ export class HeaderLocation extends React.Component {
         });
       });
   }
+  
   search() {
     var st = document.getElementById("stadium-name").value;
     console.log(st);

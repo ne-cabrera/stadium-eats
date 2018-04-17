@@ -2,7 +2,7 @@ import React from "react";
 import { OrderInfo } from "../components/restaurants/OrderInfo";
 import { ClientAppNav } from "../components/navs/ClientAppNav";
 import { HeaderRestaurant } from "../components/HeaderRestaurant";
-import { withHistory, Link } from "react-router-dom";
+import { withHistory, Link, Redirect } from "react-router-dom";
 import { ConfirmButton } from "../components/restaurants/ConfirmButton";
 export default class ConfirmOrderPage extends React.Component {
 
@@ -11,7 +11,9 @@ export default class ConfirmOrderPage extends React.Component {
     this.state = {
       stand: "",
       sector: "",
-      err: ""
+      err: "",
+      idOrd: "",
+      stateOr: ""
     };
   }
 
@@ -49,7 +51,14 @@ export default class ConfirmOrderPage extends React.Component {
         err: "Please give us your full location"
       });
     } else {
-      Meteor.call("orders.insert", prods, total, resName, userName, locationT, restaurantOwner);
+      Meteor.call("orders.insert", prods, total, resName, userName, locationT, restaurantOwner, (err, res) => {
+        if(!err){
+          this.setState({
+            idOrd: res.idOrder,
+            stateOr: res.stateOrder
+          })
+        }
+      });
       alert("Order sent successfully");
     }
     rowT = document.getElementById("rowT").value = "";
@@ -111,7 +120,9 @@ export default class ConfirmOrderPage extends React.Component {
                   <input type="number" id="sitnum" className="form-control input-lg" placeholder="Sit Number" />
                 </div>
                 <div className="form-group">
-                  <Link to="/myOrders"><ConfirmButton onClick={this.handleSubmit.bind(this)} /> </Link>
+                {this.state.stateOr !== "" ? <Redirect to={{ pathname: "/orderDetail", state: { orderId: this.state.idOrd, restName: this.props.location.state.resName, plates: this.props.location.state.selectedItems, price: this.props.location.state.total, state: this.state.stateOr, owner: this.props.location.state.resOwn } }}/>:
+              <div></div>}
+                  <ConfirmButton onClick={this.handleSubmit.bind(this)} />
                 </div>
               </form>
             </div>

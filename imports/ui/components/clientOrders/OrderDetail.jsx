@@ -35,7 +35,7 @@ export class OrderDetail extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-md-8">
-                                <h3><Link to={{ pathname: "/orderDetail", state: { orderId: this.props.orderId, restName: this.props.restName, plates: this.props.plates, price: this.props.price, state: this.props.state } }}>
+                                <h3><Link to={{ pathname: "/orderDetail", state: { orderId: this.props.orderId, restName: this.props.restName, plates: this.props.plates, price: this.props.price, state: this.props.state, owner: this.props.owner } }}>
                                     {this.props.restName}</Link></h3>
                             </div>
 

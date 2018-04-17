@@ -108,8 +108,8 @@ class OrderListRestaurant extends React.Component {
           </div>
         </div>
         </div>
-        <div>
-          <Pagination items={Math.ceil(this.props.orders.length / 4)} previous={this.previous} next={this.next} select={this.select}/>
+        <div className="pagCont">
+          <Pagination items={Math.ceil(this.props.orders.length / 4)} current={this.state.currentPage} previous={this.previous} next={this.next} select={this.select}/>
         </div>
       </div>
     );

@@ -72,13 +72,13 @@ class MyMenu extends React.Component {
           <div className="container pad">
             <div className="row">
               <div className="container  col-lg-6 padUp">
-                {this.props.restaurants[0].menu.map((d, i) =>
+                {this.props.restaurants[0] !== undefined ? this.props.restaurants[0].menu.map((d, i) =>
                   <MenuRestaurant
                     plateName={d.plateName}
                     ingredients={d.ingredients}
                     price={d.price}
                     img={d.img}
-                    key={i} />)
+                    key={i} />) : <div></div>
                 }
               </div>
               <div className="container col-lg-5 padUp">
@@ -118,7 +118,8 @@ class MyMenu extends React.Component {
 export default withTracker(() => {
   Meteor.subscribe("restaurantes");
   let owId = sessionStorage.getItem("id");
+  console.log(owId);
   return {
-    restaurants: Restaurantes.find({ owner: owId }).fetch(),
+    restaurants: Restaurantes.find({ owner: Meteor.userId() }).fetch()
   };
 })(MyMenu);

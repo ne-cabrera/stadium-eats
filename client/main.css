@@ -667,7 +667,7 @@ body {
 #newMsg{
     border-radius: 10px;
     border: none;
-    width: 75%;
+    width: 65%;
     padding-left: 10px;
 }
 
@@ -746,6 +746,16 @@ body {
     height: auto;
     width: 70%;
 }
+
+.chatElement{
+    padding: 15px;
+}
+
+.chatsList{
+    list-style-type: none;
+    overflow-y: scroll;
+    height: 400px; 
+}
 .header-chat{
     background-color:  #f4364c;
     background-position: center center;
@@ -765,4 +775,24 @@ body {
     padding-top: 50px;
     padding-left: 100px;
 
+}
+
+.pagCont{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.chatResCont{
+    margin-top: 20px;
+}
+
+.liChatRes{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: black;
+    border-bottom: black;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-width: 1px;
 }

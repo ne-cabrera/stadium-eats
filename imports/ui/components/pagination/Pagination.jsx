@@ -20,7 +20,12 @@ export class Pagination extends Component{
     createItems(){
         var arr = [];
         for(let i = 1; i <= this.props.items; i++){
-            arr.push(<PagIt num={i} key={i} sel={this.props.select}/>);
+            if( i === this.props.current){
+                arr.push(<PagIt num={i} key={i} sel={this.props.select} current={1}/>);
+            }
+            else{
+                arr.push(<PagIt num={i} key={i} sel={this.props.select} current={0}/>);
+            }
         }
         return arr;
     }

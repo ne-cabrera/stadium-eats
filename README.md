@@ -42,6 +42,14 @@ Go to the root directory and run the meteor command.
 $ meteor
 ```
 
+### Running Tests
+
+Go to the root directory and run the meteor command.
+
+```
+$ meteor test --driver-package cultofcoders:mocha --port 3100
+```
+
 ## Built With
 
 * [React](https://reactjs.org/) - The javascript library used to develop the front-end.

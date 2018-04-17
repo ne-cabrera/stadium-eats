@@ -13,7 +13,7 @@ export default class HomePage extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.search = this.search.bind(this);
   }
-
+// Es recomendado guardar las llaves en variables de entorno y no en el código
   handleClick() {
     fetch("https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyA1hR7bNT1ZIhNGm1eHDGcXUPOB3bIMPo4", {
       method: "POST"
